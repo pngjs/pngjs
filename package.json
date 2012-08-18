@@ -1,0 +1,15 @@
+{
+    "name": "pngjs",
+    "version": "0.1.0-alpha",
+    "description": "Simple PNG encoder/decoder",
+    "author": "Kuba Niegowski",
+    "contributors": [],
+    "homepage": "https://github.com/niegowski/node-pngjs/",
+    "keywords" : [
+        "png"
+    ],
+    "engines": {
+        "node": "0.8.x"
+    },
+    "main": "./lib/png.js"
+}
