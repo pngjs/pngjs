@@ -46,6 +46,10 @@ For more examples see `examples` folder.
 Documentation
 ================
 
+Currently only true color mode with 8-bit color depth (per color) with alpha
+is supported. PNG cannot parse and create images with palette of colors.
+Interlaced mode is not supported either.
+
 ## PNG
 `PNG` is readable and writeable `Stream`.
 
