@@ -5,7 +5,7 @@ var fs = require('fs'),
 
 
 var png = new PNG({
-        filterType: 4
+        filterType: -1
     }),
     src = fs.createReadStream(process.argv[2]),
     dst = fs.createWriteStream(process.argv[3] || 'out.png');
