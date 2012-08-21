@@ -17,13 +17,10 @@ png.on('parsed', function() {
         for (var x = 0; x < png.width; x++) {
             var idx = (png.width * y + x) << 2;
 
-            // invert color
-            png.data[idx] = 255 - png.data[idx];
-            png.data[idx+1] = 255 - png.data[idx+1];
-            png.data[idx+2] = 255 - png.data[idx+2];
+            if (Math.abs(png.data[idx] - png.data[idx+1]) <= 1
+                    && Math.abs(png.data[idx+1] - png.data[idx+2]) <= 1)
+                png.data[idx] = png.data[idx+1] = png.data[idx+2];
 
-            // and reduce opacity
-            png.data[idx+3] = png.data[idx+3] >> 1;
         }
     }
 

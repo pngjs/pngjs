@@ -22,8 +22,7 @@ fs.readdir(__dirname + '/img/', function(err, files) {
 
                             for (var i = 0; i < 3; i++) {
                                 var sample = this.data[idx + i] / 255;
-                                sample = Math.pow(sample, 1 / this.gamma);
-                                sample = Math.pow(sample, 1 / 2.2);
+                                sample = Math.pow(sample, 1 / 2.2 / this.gamma);
                                 this.data[idx + i] = Math.round(sample * 255);
                             }
                         }

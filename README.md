@@ -15,10 +15,8 @@ var fs = require('fs'),
     PNG = require('pngjs').PNG;
 
 var png = new PNG({
-        filterType: 4
-    }),
-    src = fs.createReadStream(process.argv[2]),
-    dst = fs.createWriteStream(process.argv[3]);
+    filterType: 4
+});
 
 png.on('parsed', function() {
 
@@ -36,21 +34,27 @@ png.on('parsed', function() {
         }
     }
 
+    png.pipe(fs.createWriteStream('out.png'));
+
     png.pack();
 });
 
-src.pipe(png).pipe(dst);
+fs.createReadStream('in.png').pipe(png);
 ```
 For more examples see `examples` folder.
 
 Documentation
 ================
 
-Currently only true color mode with 8-bit color depth (per color) with alpha
-is supported. PNG cannot parse and create images with palette of colors.
-Interlaced mode is not supported either.
+As input any color type is accepted (grayscale, rgb, palette, grayscale with alpha, rgb with alpha) but 8 bit per sample (channel) is the only supported bit depth. Interlaced mode is not supported.
 
-## PNG
+Supported ancillary chunks
+------------------
+- `gAMA` - gamma,
+- `tRNS` - transparency (but only for paletted image)
+
+
+## Class: PNG
 `PNG` is readable and writeable `Stream`.
 
 ### Options
@@ -80,8 +84,14 @@ two arguments `(err, data)`.
 ### Property: data
 Buffer of image pixel data. Every pixel consists 4 bytes: R, G, B, A (opacity).
 
+### Property: gamma
+
 Changelog
 ============
+
+### 0.2.0-alpha - 21 Aug 2012
+  - Input added palette, grayscale, no alpha support
+  - Better scanline filter selection
 
 ### 0.1.0-alpha - 19 Aug 2012
   - First version
