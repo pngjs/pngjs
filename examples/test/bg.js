@@ -24,5 +24,4 @@ for (var y = 0; y < png.height; y++) {
     }
 }
 
-png.pipe(fs.createWriteStream('bg.png'));
-png.pack();
+png.pack().pipe(fs.createWriteStream(__dirname + '/bg.png'));

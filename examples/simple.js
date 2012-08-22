@@ -24,7 +24,7 @@ png.on('parsed', function() {
         }
     }
 
-    png.pack();
+    png.pack().pipe(dst);
 });
 
-src.pipe(png).pipe(dst);
+src.pipe(png);
