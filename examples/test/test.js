@@ -6,12 +6,12 @@ var fs = require('fs'),
 fs.readdir(__dirname + '/img/', function(err, files) {
     if (err) throw err;
 
-    for (var i = 0; i < files.length; i++) {
+    files.forEach(function(file) {
 
-        if (!files[i].match(/\.png$/i))
-            continue;
+        if (!file.match(/\.png$/i))
+            return;
 
-        fs.createReadStream(__dirname + '/img/' + files[i])
+        fs.createReadStream(__dirname + '/img/' + file)
             .pipe(new PNG())
             .on('parsed', function() {
 
@@ -29,7 +29,10 @@ fs.readdir(__dirname + '/img/', function(err, files) {
                     }
                 }
 
-                this.pack();
-            }).pipe(fs.createWriteStream(__dirname + '/out/' + files[i]));
-    }
+                this.pack()
+                    .pipe(fs.createWriteStream(__dirname + '/out/' + file));
+
+            });
+
+    });
 });
