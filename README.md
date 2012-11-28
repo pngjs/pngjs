@@ -59,7 +59,8 @@ As input any color type is accepted (grayscale, rgb, palette, grayscale with alp
 - `checkCRC` - whether parser should be strict about checksums in source stream (default: `true`)
 - `deflateChunkSize` - chunk size used for deflating data chunks, this should be power of 2 and must not be less than 256 and more than 32*1024 (default: 32 kB)
 - `deflateLevel` - compression level for delate (default: 9)
-- `filterType` - png filtering method for scanlines (default: -1 => auto)
+- `deflateStrategy` - compression strategy for delate (default: 3)
+- `filterType` - png filtering method for scanlines (default: -1 => auto, accepts array of numbers 0-4)
 
 
 ### Event "metadata"
@@ -119,6 +120,10 @@ Gamma of image (0 if not specified)
 
 Changelog
 ============
+
+### 0.4.0-alpha - 29 Nov 2012
+  - added zlib deflateStrategy option, default to Z_RLE (by pdpotter)
+  - added possibility to use multiple filters (by pdpotter, modified by niegowski)
 
 ### 0.3.0-alpha - 23 Aug 2012
   - Processing data as Streams, not complete Buffers of data
