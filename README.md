@@ -121,6 +121,9 @@ Gamma of image (0 if not specified)
 Changelog
 ============
 
+### 0.4.0 - Jun 05 2013
+  - fixed reading of destroyed input stream
+
 ### 0.4.0-alpha - 29 Nov 2012
   - added zlib deflateStrategy option, default to Z_RLE (by pdpotter)
   - added possibility to use multiple filters (by pdpotter, modified by niegowski)
