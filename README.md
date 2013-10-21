@@ -5,7 +5,7 @@ Simple PNG encoder/decoder for Node.js with no native dependencies.
 Installation
 ===============
 ```
-$ npm install pngjs
+$ npm install node-png 
 ```
 
 Example
