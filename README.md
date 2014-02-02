@@ -98,9 +98,22 @@ Returns `this` for method chaining.
 
 
 ### png.bitblt(dst, sx, sy, w, h, dx, dy)
-Helper for image manipulation, copies rectangle of pixels from current image (`sx`, `sy`, `w`, `h`) to `dst` image (at `dx`, `dy`).
+Helper for image manipulation, copies a rectangle of pixels from current (i.e. the source) image (`sx`, `sy`, `w`, `h`) to `dst` image (at `dx`, `dy`).
 
 Returns `this` for method chaining.
+
+For example, the following code copies the top-left 100x50 px of `in.png` into dst and writes it to `out.png`:
+```js
+var dst = new PNG({filterType: -1, width: 100, height: 50});
+fs.createReadStream('in.png')
+    .pipe(new PNG({
+        filterType: -1
+    }))
+    .on('parsed', function() {
+        this.bitblt(dst, 0, 0, 100, 50, 0, 0);
+        dst.pack().pipe(fs.createWriteStream('out.png'));
+    });
+```
 
 
 ### Property: width
