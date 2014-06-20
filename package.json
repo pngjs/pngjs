@@ -4,12 +4,12 @@
   "description": "Simple PNG encoder/decoder",
   "author": "Kuba Niegowski",
   "contributors": [],
-  "homepage": "https://github.com/niegowski/node-pngjs/",
+  "homepage": "https://github.com/brighthas/node-pngjs/",
   "keywords": [
     "png"
   ],
   "engines": {
-    "node": "0.8.x"
+    "node": "0.10.x"
   },
   "main": "./lib/png.js",
   "directories": {

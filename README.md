@@ -121,6 +121,10 @@ Gamma of image (0 if not specified)
 Changelog
 ============
 
+### 0.4.3 - 19 June 2014
+  - fixed fill
+  - fix(chunkstream): max call stack thrown when parsing large pngs
+  
 ### 0.4.0 - Jun 05 2013
   - fixed reading of destroyed input stream
 
@@ -138,12 +142,21 @@ Changelog
 ### 0.1.0-alpha - 19 Aug 2012
   - First version
 
+
+Contributors
+============
+
+brighthas https://github.com/brighthas
+
+steelsojka https://github.com/steelsojka
+
+
 License
 =========
 
 (The MIT License)
 
-Copyright (c) 2012 Kuba Niegowski
+Copyright (c) 2014 brighthas <brighthas@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
