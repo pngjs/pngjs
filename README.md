@@ -5,14 +5,14 @@ Simple PNG encoder/decoder for Node.js with no native dependencies.
 Installation
 ===============
 ```
-$ npm install node-png 
+$ npm install node-png  --save
 ```
 
 Example
 ==========
 ```js
 var fs = require('fs'),
-    PNG = require('pngjs').PNG;
+    PNG = require('node-png').PNG;
 
 fs.createReadStream('in.png')
     .pipe(new PNG({
