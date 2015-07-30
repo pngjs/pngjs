@@ -83,13 +83,20 @@ Input image has been completly parsed, `data` is complete and ready for modifica
 
 
 ### png.parse(data, [callback])
-Parses PNG file data. Alternatively you can stream data to instance of PNG.
+Parses PNG file data. Can be `String` or `Buffer`. Alternatively you can stream data to instance of PNG.
 
 Optional `callback` is once called on `error` or `parsed`. The callback gets
 two arguments `(err, data)`.
 
 Returns `this` for method chaining.
 
++#### Example
+```js
+new PNG({ filterType:4 }).parse( imageData, function(error, data)
+{
+	console.log(error, data)
+});
+```
 
 ### png.pack()
 Starts converting data to PNG file Stream.
