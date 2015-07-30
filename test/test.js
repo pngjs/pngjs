@@ -1,9 +1,9 @@
 
 var fs = require('fs'),
-    PNG = require('pngjs').PNG;
+    PNG = require('../lib/png').PNG;
 
 
-fs.readdir(__dirname + '/img/', function(err, files) {
+fs.readdir(__dirname + '/in/', function(err, files) {
     if (err) throw err;
 
     files.forEach(function(file) {
@@ -11,9 +11,28 @@ fs.readdir(__dirname + '/img/', function(err, files) {
         if (!file.match(/\.png$/i))
             return;
 
-        fs.createReadStream(__dirname + '/img/' + file)
+        var expectedError = false;
+        if (file.match(/^x/) ||
+            file.match(/^...i/) || // interlace
+            file.match(/^......(01|02|04|16)/) || // 1/2/4/16 bit
+            file.match(/^basn3p(01|02|04)/) || // 2/4/16 colour palette
+            file.match(/^s/) // odd sizes
+        ) {
+            expectedError = true;
+        }
+
+        fs.createReadStream(__dirname + '/in/' + file)
             .pipe(new PNG())
+            .on('error', function() {
+              if (!expectedError) {
+                  console.log("Error reading " + file);
+              }
+            })
             .on('parsed', function() {
+
+                if (expectedError) {
+                    console.log("Error expected, parsed fine", file);
+                }
 
                 if (this.gamma) {
                     for (var y = 0; y < this.height; y++) {
