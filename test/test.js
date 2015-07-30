@@ -2,7 +2,6 @@
 var fs = require('fs'),
     PNG = require('../lib/png').PNG;
 
-
 fs.readdir(__dirname + '/in/', function(err, files) {
     if (err) throw err;
 
@@ -20,6 +19,19 @@ fs.readdir(__dirname + '/in/', function(err, files) {
             expectedError = true;
         }
 
+        if (!expectedError) {
+            var data = fs.readFileSync(__dirname + '/in/' + file);
+            var png = PNG.sync.read(data);
+
+            var outpng = new PNG();
+            PNG.adjustGamma(png);
+            outpng.data = png.data;
+            outpng.width = png.width;
+            outpng.height = png.height;
+            outpng.pack()
+              .pipe(fs.createWriteStream(__dirname + '/outsync/' + file));
+        }
+
         fs.createReadStream(__dirname + '/in/' + file)
             .pipe(new PNG())
             .on('error', function(err) {
@@ -33,22 +45,10 @@ fs.readdir(__dirname + '/in/', function(err, files) {
                     console.log("Error expected, parsed fine", file);
                 }
 
-                if (this.gamma) {
-                    for (var y = 0; y < this.height; y++) {
-                        for (var x = 0; x < this.width; x++) {
-                            var idx = (this.width * y + x) << 2;
-
-                            for (var i = 0; i < 3; i++) {
-                                var sample = this.data[idx + i] / 255;
-                                sample = Math.pow(sample, 1 / 2.2 / this.gamma);
-                                this.data[idx + i] = Math.round(sample * 255);
-                            }
-                        }
-                    }
-                }
+                this.adjustGamma();
 
                 this.pack()
-                    .pipe(fs.createWriteStream(__dirname + '/out/' + file));
+                  .pipe(fs.createWriteStream(__dirname + '/out/' + file));
 
             });
 
