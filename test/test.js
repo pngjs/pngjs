@@ -15,17 +15,16 @@ fs.readdir(__dirname + '/in/', function(err, files) {
         if (file.match(/^x/) ||
             file.match(/^...i/) || // interlace
             file.match(/^......(01|02|04|16)/) || // 1/2/4/16 bit
-            file.match(/^basn3p(01|02|04)/) || // 2/4/16 colour palette
-            file.match(/^s/) // odd sizes
+            file.match(/^basn3p(01|02|04)/) // 2/4/16 colour palette
         ) {
             expectedError = true;
         }
 
         fs.createReadStream(__dirname + '/in/' + file)
             .pipe(new PNG())
-            .on('error', function() {
+            .on('error', function(err) {
               if (!expectedError) {
-                  console.log("Error reading " + file);
+                  console.log("Error reading " + file, err);
               }
             })
             .on('parsed', function() {

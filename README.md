@@ -2,6 +2,16 @@ About
 ========
 Simple PNG encoder/decoder for Node.js with no native dependencies.
 
+Based on `node-png`, which is a patched version of `pngjs`.
+
+Unsupported Files
+=================
+
+ * Interlace
+ * 1,2,4 & 16 bit
+
+ Tested using [PNG Suite](http://www.schaik.com/pngsuite/). To see tests, run `node test/test` and `view test/list.html`.
+
 Installation
 ===============
 ```
@@ -144,7 +154,7 @@ Changelog
 ### 0.4.3 - 19 June 2014
   - fixed fill
   - fix(chunkstream): max call stack thrown when parsing large pngs
-  
+
 ### 0.4.0 - Jun 05 2013
   - fixed reading of destroyed input stream
 
