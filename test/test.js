@@ -12,25 +12,35 @@ fs.readdir(__dirname + '/in/', function(err, files) {
 
         var expectedError = false;
         if (file.match(/^x/) ||
-            file.match(/^...i/) || // interlace
-            file.match(/^......(01|02|04|16)/) || // 1/2/4/16 bit
-            file.match(/^basn3p(01|02|04)/) // 2/4/16 colour palette
+            file.match(/^...i/) ||// interlace
+            file.match(/^......(16)/) // 1/2/4/16 bit
         ) {
             expectedError = true;
         }
 
-        if (!expectedError) {
-            var data = fs.readFileSync(__dirname + '/in/' + file);
+        var data = fs.readFileSync(__dirname + '/in/' + file);
+        try {
+            console.log("Sync: parsing..", file);
             var png = PNG.sync.read(data);
-
-            var outpng = new PNG();
-            PNG.adjustGamma(png);
-            outpng.data = png.data;
-            outpng.width = png.width;
-            outpng.height = png.height;
-            outpng.pack()
-              .pipe(fs.createWriteStream(__dirname + '/outsync/' + file));
+        } catch (e) {
+            if (!expectedError) {
+                console.log(e);
+                console.log(e.stack);
+            }
+            return;
         }
+
+        if (expectedError) {
+            console.log("Error expected, parsed fine", file);
+        }
+
+        var outpng = new PNG();
+        PNG.adjustGamma(png);
+        outpng.data = png.data;
+        outpng.width = png.width;
+        outpng.height = png.height;
+        outpng.pack()
+          .pipe(fs.createWriteStream(__dirname + '/outsync/' + file));
 
         fs.createReadStream(__dirname + '/in/' + file)
             .pipe(new PNG())
