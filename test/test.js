@@ -12,8 +12,7 @@ fs.readdir(__dirname + '/in/', function(err, files) {
 
         var expectedError = false;
         if (file.match(/^x/) ||
-            file.match(/^...i/) ||// interlace
-            file.match(/^......(16)/) // 1/2/4/16 bit
+            file.match(/^...i/) // interlace
         ) {
             expectedError = true;
         }
