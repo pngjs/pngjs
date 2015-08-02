@@ -1,6 +1,6 @@
 {
   "name": "pngjs2",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Pure JS PNG encoder/decoder",
   "contributors": ["Kuba Niegowski", "Luke Page", "Pietajan De Potter", "Steven Sojka", "Alexandre Paré", "Gaurav Mali", "liangzeng"],
   "homepage": "https://github.com/lukeapage/pngjs2",
