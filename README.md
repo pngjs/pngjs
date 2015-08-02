@@ -83,6 +83,7 @@ Image's header has been parsed, metadata contains this information:
 - `palette` image is paletted
 - `color` image is not grayscale
 - `alpha` image contains alpha channel
+- `interlace` image is interlaced
 
 
 ### Event: "parsed"
