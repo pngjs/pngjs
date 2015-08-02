@@ -1,21 +1,23 @@
 About
 ========
-Simple PNG encoder/decoder for Node.js with no native dependencies.
+Simple PNG encoder/decoder for Node.js with no dependencies.
 
-Based on `node-png`, which is a patched version of `pngjs`.
+Based on [pngjs](https://github.com/niegowski/node-pngjs) with the follow enhancements.
 
-Unsupported Files
-=================
+  * Support for reading 1,2,4 & 16 bit files
+  * Support for reading interlace files
+  * Sync interface as well as async
+  * API compatible with pngjs and node-pngjs
 
- * Interlace
- * 1,2,4 & 16 bit
+Tests
+=====
 
  Tested using [PNG Suite](http://www.schaik.com/pngsuite/). To see tests, run `node test/test` and `view test/list.html`.
 
 Installation
 ===============
 ```
-$ npm install node-png  --save
+$ npm install pngjs2  --save
 ```
 
 Example
@@ -49,7 +51,7 @@ fs.createReadStream('in.png')
 ```
 For more examples see `examples` folder.
 
-Documentation
+API
 ================
 
 As input any color type is accepted (grayscale, rgb, palette, grayscale with alpha, rgb with alpha) but 8 bit per sample (channel) is the only supported bit depth. Interlaced mode is not supported.
@@ -151,42 +153,13 @@ Gamma of image (0 if not specified)
 Changelog
 ============
 
-### 0.4.3 - 19 June 2014
-  - fixed fill
-  - fix(chunkstream): max call stack thrown when parsing large pngs
-
-### 0.4.0 - Jun 05 2013
-  - fixed reading of destroyed input stream
-
-### 0.4.0-alpha - 29 Nov 2012
-  - added zlib deflateStrategy option, default to Z_RLE (by pdpotter)
-  - added possibility to use multiple filters (by pdpotter, modified by niegowski)
-
-### 0.3.0-alpha - 23 Aug 2012
-  - Processing data as Streams, not complete Buffers of data
-
-### 0.2.0-alpha - 21 Aug 2012
-  - Input added palette, grayscale, no alpha support
-  - Better scanline filter selection
-
-### 0.1.0-alpha - 19 Aug 2012
-  - First version
-
-
-Contributors
-============
-
-brighthas https://github.com/brighthas
-
-steelsojka https://github.com/steelsojka
-
+### 0.0.1 - 02/08/2015
+  - Initial release, see pngjs for older changelog.
 
 License
 =========
 
 (The MIT License)
-
-Copyright (c) 2014 brighthas <brighthas@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
