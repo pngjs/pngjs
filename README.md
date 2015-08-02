@@ -6,8 +6,14 @@ Based on [pngjs](https://github.com/niegowski/node-pngjs) with the follow enhanc
 
   * Support for reading 1,2,4 & 16 bit files
   * Support for reading interlace files
+  * Support for reading transparent colours
   * Sync interface as well as async
   * API compatible with pngjs and node-pngjs
+
+Known lack of support for:
+
+  * Animation
+  * Gamma correction in 16 bit files
 
 Tests
 =====
@@ -153,6 +159,9 @@ Gamma of image (0 if not specified)
 
 Changelog
 ============
+
+### 0.0.2 - 02/08/2015
+  - Bugfixes to interlacing, support for transparent colours
 
 ### 0.0.1 - 02/08/2015
   - Initial release, see pngjs for older changelog.
