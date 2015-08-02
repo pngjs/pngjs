@@ -1,10 +1,9 @@
 {
-  "name": "node-png",
-  "version": "0.4.3",
-  "description": "Simple PNG encoder/decoder",
-  "author": "Kuba Niegowski",
-  "contributors": [],
-  "homepage": "https://github.com/brighthas/node-pngjs/",
+  "name": "pngjs2",
+  "version": "1.0.0",
+  "description": "Pure JS PNG encoder/decoder",
+  "contributors": ["Kuba Niegowski", "Luke Page", "Pietajan De Potter", "Steven Sojka", "Alexandre Paré", "Gaurav Mali", "liangzeng"],
+  "homepage": "https://github.com/lukeapage/pngjs2",
   "keywords": [
     "png"
   ],
@@ -16,14 +15,14 @@
     "example": "examples"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test/test"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/brighthas/node-pngjs.git"
+    "url": "git://github.com/lukeapage/pngjs2.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/brighthas/node-pngjs/issues"
+    "url": "https://github.com/lukeapage/pngjs2/issues"
   }
 }
