@@ -7,22 +7,20 @@ fs.readdir(__dirname + '/in/', function(err, files) {
 
     files.forEach(function(file) {
 
-        if (!file.match(/\.png$/i))
+        if (!file.match(/.*\.png$/i))
             return;
 
         var expectedError = false;
-        if (file.match(/^x/) ||
-            file.match(/^...i/) // interlace
-        ) {
+        if (file.match(/^x/)) {
             expectedError = true;
         }
 
         var data = fs.readFileSync(__dirname + '/in/' + file);
         try {
-            console.log("Sync: parsing..", file);
             var png = PNG.sync.read(data);
         } catch (e) {
             if (!expectedError) {
+                console.log("Unexpected error parsing.." + file);
                 console.log(e);
                 console.log(e.stack);
             }
@@ -30,7 +28,7 @@ fs.readdir(__dirname + '/in/', function(err, files) {
         }
 
         if (expectedError) {
-            console.log("Error expected, parsed fine", file);
+            console.log("Error expected, parsed fine ..", file);
         }
 
         var outpng = new PNG();
