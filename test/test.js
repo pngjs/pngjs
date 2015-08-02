@@ -7,7 +7,7 @@ fs.readdir(__dirname + '/in/', function(err, files) {
 
     files.forEach(function(file) {
 
-        if (!file.match(/.*\.png$/i))
+        if (!file.match(/\.png$/i))
             return;
 
         var expectedError = false;
