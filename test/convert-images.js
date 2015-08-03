@@ -13,18 +13,23 @@ module.exports = function(done) {
 
         console.log("Converting images");
 
-        var asyncSaved = 0;
+        var completed = 0;
+        var expected = files.length * 2;
+        function complete() {
+            completed++;
+            if (expected === completed) {
+                done();
+            }
+        }
 
         files.forEach(function (file) {
-
-
 
             var expectedError = false;
             if (file.match(/^x/)) {
                 expectedError = true;
             }
 
-            var syncError = true;
+            var syncError = false;
             var data = fs.readFileSync(__dirname + '/in/' + file);
             try {
                 var png = PNG.sync.read(data);
@@ -33,22 +38,28 @@ module.exports = function(done) {
                     console.log("Unexpected error parsing.." + file);
                     console.log(e);
                     console.log(e.stack);
-                    syncError = true;
                 }
+                syncError = true;
+                complete();
             }
 
             if (!syncError) {
                 if (expectedError) {
                     console.log("Error expected, parsed fine ..", file);
-                }
+                    complete();
+                } else {
 
-                var outpng = new PNG();
-                //PNG.adjustGamma(png);
-                outpng.data = png.data;
-                outpng.width = png.width;
-                outpng.height = png.height;
-                outpng.pack()
-                  .pipe(fs.createWriteStream(__dirname + '/outsync/' + file));
+                    var outpng = new PNG();
+                    //PNG.adjustGamma(png);
+                    outpng.data = png.data;
+                    outpng.width = png.width;
+                    outpng.height = png.height;
+                    outpng.pack()
+                      .pipe(fs.createWriteStream(__dirname + '/outsync/' + file)
+                        .on("finish", function () {
+                            complete();
+                        }));
+                }
             }
 
             fs.createReadStream(__dirname + '/in/' + file)
@@ -57,10 +68,7 @@ module.exports = function(done) {
                   if (!expectedError) {
                       console.log("Error reading " + file, err);
                   }
-                  asyncSaved++;
-                  if (asyncSaved === files.length) {
-                      done();
-                  }
+                  complete();
               })
               .on('parsed', function () {
 
@@ -70,13 +78,11 @@ module.exports = function(done) {
                   //this.adjustGamma();
 
                   this.pack()
-                    .on("end", function() {
-                        asyncSaved++;
-                        if (asyncSaved === files.length) {
-                            done();
-                        }
-                    })
-                  .pipe(fs.createWriteStream(__dirname + '/out/' + file))
+                  .pipe(
+                    fs.createWriteStream(__dirname + '/out/' + file)
+                      .on("finish", function() {
+                          complete();
+                      }));
 
               });
 

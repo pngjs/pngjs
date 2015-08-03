@@ -16,10 +16,20 @@ setInterval(function() {
 
   if (results) {
     var success = true;
+    var successes = [],
+      failures = [];
     for(var i = 0; i < results.length; i++) {
       var result = results[i];
-      console.log(result.name, result.success);
+      if (result.success) {
+        successes.push(result.name);
+      } else {
+        failures.push(result.name);
+      }
       success = success && result.success;
+    }
+    console.log("Success:", successes.join(", "));
+    if (failures.length) {
+      console.log("Failure:", failures.join(", "));
     }
 
     phantom.exit(success ? 0 : 1);

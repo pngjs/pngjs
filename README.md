@@ -6,7 +6,7 @@ Based on [pngjs](https://github.com/niegowski/node-pngjs) with the follow enhanc
 
   * Support for reading 1,2,4 & 16 bit files
   * Support for reading interlace files
-  * Support for reading transparent colours
+  * Support for reading `tTRNS` transparent colours
   * Sync interface as well as async
   * API compatible with pngjs and node-pngjs
 
@@ -14,13 +14,39 @@ Known lack of support for:
 
   * Animation
   * Gamma correction in 16 bit files
+  
+Comparison Table
+================
+
+Name     |  Forked From | Sync | Async | 16 Bit | 1/2/4 Bit | Interlace | Gamma | Encodes | Tested
+---------|--------------|------|-------|--------|-----------|-----------|-------|---------|--------
+pngjs2   | pngjs        | Read | Yes   | Yes    | Yes       | Yes       | Yes   | Yes     | Yes
+node-png | pngjs        | No   | Yes   | No     | No        | No        | Hidden| Yes     | Manual
+pngjs    |              | No   | Yes   | No     | No        | No        | Hidden| Yes     | Manual
+png-coder| pngjs        | No   | Yes   | Yes    | No        | No        | Hidden| Yes     | Manual
+pngparse |              | No   | Yes   | No     | Yes       | No        | No    | No      | Yes
+pngparse-sync | pngparse| Yes  | No    | No     | Yes       | No        | No    | No      | Yes
+png-async|              | No   | Yes   | No     | No        | No        | No    | Yes     | Yes
+png-js   |              | No   | Yes   | No     | No        | No        | No    | No      | No
+
+
+Native C++ node decoders:
+ * png
+ * png-sync (sync version of above)
+ * pixel-png
+ * png-img
 
 Tests
 =====
 
- Tested using [PNG Suite](http://www.schaik.com/pngsuite/). 
+Tested using [PNG Suite](http://www.schaik.com/pngsuite/). We read every file into pngjs2, output it in standard 8bit colour, synchronously and asynchronously, then compare the original
+with the newly saved images.
+
+To run the tests, run `node test`.
+  
+The only thing not converted is gamma correction - this is because multiple vendors will do gamma correction differently, so the tests will have different results on different browsers.
  
- To run the tests in phantomjs, run `node test`.
+In addition we use a tolerance of 3 for 16 bit images in PhantomJS because PhantomJS seems to have non-compliant rules for downscaling 16 bit images.
  
  TODO: How to run the gamma tests
  TODO: How to run the tests in chrome

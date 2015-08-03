@@ -13,7 +13,16 @@
   ],
   "homepage": "https://github.com/lukeapage/pngjs2",
   "keywords": [
-    "png"
+    "png",
+    "PNG",
+    "parser",
+    "encoder",
+    "decoder",
+    "pngjs",
+    "node-png",
+    "png-parse",
+    "png-js",
+    "js-png"
   ],
   "engines": {
     "node": "0.10.x"
