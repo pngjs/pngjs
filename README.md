@@ -1,4 +1,5 @@
-About
+[![Build Status](https://travis-ci.org/lukeapage/pngjs2.svg?branch=master)](https://travis-ci.org/lukeapage/pngjs2) [![npm version](https://badge.fury.io/js/pngjs2.svg)](http://badge.fury.io/js/pngjs2)
+pngjs2
 ========
 Simple PNG encoder/decoder for Node.js with no dependencies.
 
@@ -54,9 +55,6 @@ The only thing not converted is gamma correction - this is because multiple vend
  
 In addition we use a tolerance of 3 for 16 bit images in PhantomJS because PhantomJS seems to have non-compliant rules for downscaling 16 bit images.
  
- TODO: How to run the gamma tests
- TODO: How to run the tests in chrome
-
 Installation
 ===============
 ```
