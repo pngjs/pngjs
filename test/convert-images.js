@@ -8,7 +8,7 @@ module.exports = function(done) {
         if (err) throw err;
 
         files = files.filter(function(file) {
-            return Boolean(file.match(/\.png$/i));
+            return ((process.argv[2] || "").indexOf("nolarge") < 0 || !file.match(/large/i)) && Boolean(file.match(/\.png$/i));
         });
 
         console.log("Converting images");
@@ -24,6 +24,7 @@ module.exports = function(done) {
 
         files.forEach(function (file) {
 
+            console.log(file);
             var expectedError = false;
             if (file.match(/^x/)) {
                 expectedError = true;
