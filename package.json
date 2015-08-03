@@ -32,7 +32,7 @@
     "example": "examples"
   },
   "scripts": {
-    "test": "node test/test"
+    "test": "node test"
   },
   "repository": {
     "type": "git",
