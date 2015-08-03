@@ -226,11 +226,17 @@
             if (asyncImage.height === 0 || syncImage.height === 0) {
                 success = false;
             } else {
-                var equal = imagediff.equal(inImage, asyncImage, 2);
+                var tolerance = 0;
+                if (inImage.src.match(/16\.png/)) {
+                    tolerance = 16;
+                } else if (inImage.src.match(/g04n2c08/)) {
+                    tolerance = 1;
+                }
+                var equal = imagediff.equal(inImage, asyncImage, tolerance);
                 if (!equal) {
                     success = false;
                 }
-                equal = imagediff.equal(inImage, syncImage, 2);
+                equal = imagediff.equal(inImage, syncImage, tolerance);
                 if (!equal) {
                     success = false;
                 }
