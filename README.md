@@ -189,6 +189,10 @@ Gamma of image (0 if not specified)
 Changelog
 ============
 
+### 0.0.3 - 03/08/2015
+  - Error handling fixes
+  - ignore files for smaller npm footprint
+
 ### 0.0.2 - 02/08/2015
   - Bugfixes to interlacing, support for transparent colours
 

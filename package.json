@@ -1,6 +1,6 @@
 {
   "name": "pngjs2",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Pure JS PNG encoder/decoder",
   "contributors": [
     "Alexandre Paré",
