@@ -13,9 +13,8 @@ Based on [pngjs](https://github.com/niegowski/node-pngjs) with the follow enhanc
 
 Known lack of support for:
 
-  * Animation
-  * Gamma correction in 16 bit files
-  
+  * Extended PNG e.g. Animation
+
 Requirements
 ============
 
