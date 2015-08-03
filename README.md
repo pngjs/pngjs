@@ -97,11 +97,6 @@ API
 
 As input any color type is accepted (grayscale, rgb, palette, grayscale with alpha, rgb with alpha) but 8 bit per sample (channel) is the only supported bit depth. Interlaced mode is not supported.
 
-### Supported ancillary chunks
-- `gAMA` - gamma,
-- `tRNS` - transparency (but only for paletted image)
-
-
 ## Class: PNG
 `PNG` is readable and writable `Stream`.
 
