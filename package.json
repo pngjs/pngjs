@@ -2,7 +2,15 @@
   "name": "pngjs2",
   "version": "0.0.2",
   "description": "Pure JS PNG encoder/decoder",
-  "contributors": ["Kuba Niegowski", "Luke Page", "Pietajan De Potter", "Steven Sojka", "Alexandre Paré", "Gaurav Mali", "liangzeng"],
+  "contributors": [
+    "Alexandre Paré",
+    "Gaurav Mali",
+    "Kuba Niegowski",
+    "Luke Page",
+    "Pietajan De Potter",
+    "Steven Sojka",
+    "liangzeng"
+  ],
   "homepage": "https://github.com/lukeapage/pngjs2",
   "keywords": [
     "png"
@@ -24,5 +32,10 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/lukeapage/pngjs2/issues"
+  },
+  "devDependencies": {
+    "connect": "^3.4.0",
+    "phantomjs": "^1.9.17",
+    "serve-static": "^1.10.0"
   }
 }

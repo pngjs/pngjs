@@ -18,7 +18,12 @@ Known lack of support for:
 Tests
 =====
 
- Tested using [PNG Suite](http://www.schaik.com/pngsuite/). To see tests, run `node test/test` and `view test/list.html`.
+ Tested using [PNG Suite](http://www.schaik.com/pngsuite/). 
+ 
+ To run the tests in phantomjs, run `node test`.
+ 
+ TODO: How to run the gamma tests
+ TODO: How to run the tests in chrome
 
 Installation
 ===============

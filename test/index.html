@@ -198,7 +198,32 @@
 <p class="testline"><img class="inimage" src="in/g03n3p04.png"> <img class="asyncimage" src="out/g03n3p04.png"> <img class="syncimage" src="outsync/g03n3p04.png"> </p>
 <p class="testline"><img class="inimage" src="in/g03n2c08.png"> <img class="asyncimage" src="out/g03n2c08.png"> <img class="syncimage" src="outsync/g03n2c08.png"> </p>
 <p class="testline"><img class="inimage" src="in/g03n0g16.png"> <img class="asyncimage" src="out/g03n0g16.png"> <img class="syncimage" src="outsync/g03n0g16.png"> </p>
+<script>
+    if (!Function.prototype.bind) {
+        Function.prototype.bind = function(oThis) {
+            if (typeof this !== 'function') {
+                // closest thing possible to the ECMAScript 5
+                // internal IsCallable function
+                throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
+            }
 
+            var aArgs   = Array.prototype.slice.call(arguments, 1),
+                    fToBind = this,
+                    fNOP    = function() {},
+                    fBound  = function() {
+                        return fToBind.apply(this instanceof fNOP
+                                        ? this
+                                        : oThis,
+                                aArgs.concat(Array.prototype.slice.call(arguments)));
+                    };
+
+            fNOP.prototype = this.prototype;
+            fBound.prototype = new fNOP();
+
+            return fBound;
+        };
+    }
+</script>
 <script src="imagediff.js"></script>
 <script>
 
@@ -214,7 +239,14 @@
         }, 10);
     }
 
+    window.isFinished = function() {
+        return testCount && testsDone === testCount;
+    };
+    window.results = [];
+
     var testLines = document.getElementsByClassName("testline");
+    var testCount = testLines.length,
+            testsDone = 0;
     for(var i = 0; i < testLines.length; i++) {
         var testLine = testLines[i];
         var inImage = testLine.getElementsByClassName("inimage")[0];
@@ -223,15 +255,18 @@
         waitForImages([inImage, asyncImage, syncImage], function(inImage, asyncImage, syncImage, testLine) {
             var success = true;
             console.log("testing " + inImage.src);
+
+            var tolerance;
+            if (inImage.src.match(/16\.png/)) {
+                tolerance = 3; // phantomjs uses a different scaling method.
+                // In chrome with gamma correction this can be 2.
+            } else {
+                tolerance = 0;
+            }
+
             if (asyncImage.height === 0 || syncImage.height === 0) {
                 success = false;
             } else {
-                var tolerance = 0;
-                if (inImage.src.match(/16\.png/)) {
-                    tolerance = 16;
-                } else if (inImage.src.match(/g04n2c08/)) {
-                    tolerance = 1;
-                }
                 var equal = imagediff.equal(inImage, asyncImage, tolerance);
                 if (!equal) {
                     success = false;
@@ -246,6 +281,8 @@
             } else {
                 testLine.className = testLine.className + " success";
             }
+            results.push({name: inImage.src.replace(/\.png$/, "").replace(/^.*\//, ""), success: success});
+            testsDone++;
         }.bind(null, inImage, asyncImage, syncImage, testLine));
     }
 </script>
