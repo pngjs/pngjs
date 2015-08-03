@@ -24,7 +24,7 @@ module.exports = function(done) {
 
         files.forEach(function (file) {
 
-            console.log(file);
+            //console.log(file);
             var expectedError = false;
             if (file.match(/^x/)) {
                 expectedError = true;
