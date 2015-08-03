@@ -15,6 +15,12 @@ Known lack of support for:
   * Animation
   * Gamma correction in 16 bit files
   
+Requirements
+============
+
+Async - Node.js 0.10 / 0.12 / IO.js
+Sync - Node.js 0.12 / IO.js
+  
 Comparison Table
 ================
 
