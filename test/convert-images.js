@@ -35,7 +35,7 @@ module.exports = function(done) {
                 var png = PNG.sync.read(data);
             } catch (e) {
                 if (!expectedError) {
-                    console.log("Unexpected error parsing.." + file);
+                    console.log("Sync: Unexpected error parsing.." + file);
                     console.log(e);
                     console.log(e.stack);
                 }
@@ -45,7 +45,7 @@ module.exports = function(done) {
 
             if (!syncError) {
                 if (expectedError) {
-                    console.log("Error expected, parsed fine ..", file);
+                    console.log("Sync: Error expected, parsed fine ..", file);
                     complete();
                 } else {
 
@@ -66,14 +66,14 @@ module.exports = function(done) {
               .pipe(new PNG())
               .on('error', function (err) {
                   if (!expectedError) {
-                      console.log("Error reading " + file, err);
+                      console.log("Async: Unexpected error parsing.." + file, err);
                   }
                   complete();
               })
               .on('parsed', function () {
 
                   if (expectedError) {
-                      console.log("Error expected, parsed fine", file);
+                      console.log("Async: Error expected, parsed fine ..", file);
                   }
                   //this.adjustGamma();
 
