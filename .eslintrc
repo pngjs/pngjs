@@ -1,7 +1,7 @@
 {
     "ecmaFeatures": {},
     "rules": {
-        "no-alert": 1,
+        "no-alert": 2,
         "no-array-constructor": 1,
         "no-bitwise": 0,
         "no-caller": 2,
@@ -23,7 +23,7 @@
         "no-empty": 2,
         "no-empty-character-class": 2,
         "no-empty-label": 1,
-        "no-eq-null": 1,
+        "no-eq-null": 0,
         "no-eval": 2,
         "no-ex-assign": 2,
         "no-extend-native": 0,
@@ -36,7 +36,7 @@
         "no-func-assign": 2,
         "no-implicit-coercion": 0,
         "no-implied-eval": 1,
-        "no-inline-comments": 1,
+        "no-inline-comments": 0,
         "no-inner-declarations": [2, "functions"],
         "no-invalid-regexp": 2,
         "no-invalid-this": 1,
