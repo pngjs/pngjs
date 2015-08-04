@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/lukeapage/pngjs2.svg?branch=master)](https://travis-ci.org/lukeapage/pngjs2) [![Build status](https://ci.appveyor.com/api/projects/status/tb8418jql1trkntd/branch/master?svg=true)](https://ci.appveyor.com/project/lukeapage/pngjs2/branch/master) [![Coverage Status](https://coveralls.io/repos/lukeapage/pngjs2/badge.svg?branch=master&service=github)](https://coveralls.io/github/lukeapage/pngjs2?branch=master) [![npm version](https://badge.fury.io/js/pngjs2.svg)](http://badge.fury.io/js/pngjs2)
+
 pngjs2
 ========
 Simple PNG encoder/decoder for Node.js with no dependencies.
