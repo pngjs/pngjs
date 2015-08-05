@@ -15,9 +15,15 @@ module.exports = function(done) {
 
         var completed = 0;
         var expected = files.length * 2;
-        function complete() {
+        var anyFailures = false;
+        function complete(isSuccessful) {
             completed++;
+            anyFailures = anyFailures || !isSuccessful;
             if (expected === completed) {
+                if (anyFailures) {
+                    process.exit(1);
+                    return;
+                }
                 done();
             }
         }
@@ -41,13 +47,13 @@ module.exports = function(done) {
                     console.log(e.stack);
                 }
                 syncError = true;
-                complete();
+                complete(expectedError);
             }
 
             if (!syncError) {
                 if (expectedError) {
                     console.log("Sync: Error expected, parsed fine ..", file);
-                    complete();
+                    complete(false);
                 } else {
 
                     var outpng = new PNG();
@@ -58,7 +64,7 @@ module.exports = function(done) {
                     outpng.pack()
                       .pipe(fs.createWriteStream(__dirname + '/outsync/' + file)
                         .on("finish", function () {
-                            complete();
+                            complete(true);
                         }));
                 }
             }
@@ -69,7 +75,7 @@ module.exports = function(done) {
                   if (!expectedError) {
                       console.log("Async: Unexpected error parsing.." + file, err);
                   }
-                  complete();
+                  complete(expectedError);
               })
               .on('parsed', function () {
 
@@ -82,11 +88,9 @@ module.exports = function(done) {
                   .pipe(
                     fs.createWriteStream(__dirname + '/out/' + file)
                       .on("finish", function() {
-                          complete();
+                          complete(true);
                       }));
-
               });
-
         });
     });
 }
