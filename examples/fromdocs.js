@@ -1,8 +1,8 @@
 
 var fs = require('fs'),
-    PNG = require('pngjs').PNG;
+    PNG = require('../lib/png').PNG; // note require('pngjs') outside this project
 
-fs.createReadStream('in.png')
+fs.createReadStream('test/in/basi0g01.png')
     .pipe(new PNG({
         filterType: 4
     }))
