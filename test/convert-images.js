@@ -57,7 +57,7 @@ module.exports = function(done) {
                 } else {
 
                     var outpng = new PNG();
-                    //PNG.adjustGamma(png);
+                    outpng.gamma = png.gamma;
                     outpng.data = png.data;
                     outpng.width = png.width;
                     outpng.height = png.height;
@@ -82,7 +82,6 @@ module.exports = function(done) {
                   if (expectedError) {
                       console.log("Async: Error expected, parsed fine ..", file);
                   }
-                  //this.adjustGamma();
 
                   this.pack()
                   .pipe(
