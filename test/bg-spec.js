@@ -6,6 +6,9 @@ var test = require('tape');
 var bufferEqual = require('buffer-equal');
 
 test('outputs background, created from scratch', function (t) {
+
+  t.timeoutAfter(1000 * 60);
+
   var png = new PNG({
     width: 10,
     height: 10,
