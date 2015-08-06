@@ -7,7 +7,7 @@ var bufferEqual = require('buffer-equal');
 
 test('outputs background, created from scratch', function (t) {
 
-  t.timeoutAfter(1000 * 60);
+  t.timeoutAfter(1000 * 60 * 5);
 
   var png = new PNG({
     width: 10,

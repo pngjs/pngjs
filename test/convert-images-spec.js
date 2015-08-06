@@ -20,7 +20,7 @@ fs.readdir(__dirname + '/in/', function (err, files) {
 
     test('convert sync - ' + file, function (t) {
 
-      t.timeoutAfter(1000 * 60);
+      t.timeoutAfter(1000 * 60 * 5);
 
       var data = fs.readFileSync(__dirname + '/in/' + file);
       try {
@@ -54,7 +54,7 @@ fs.readdir(__dirname + '/in/', function (err, files) {
 
     test('convert async - ' + file, function (t) {
 
-      t.timeoutAfter(1000 * 60);
+      t.timeoutAfter(1000 * 60 * 5);
 
       fs.createReadStream(__dirname + '/in/' + file)
         .pipe(new PNG())
