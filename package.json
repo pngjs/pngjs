@@ -32,9 +32,9 @@
     "example": "examples"
   },
   "scripts": {
-    "coverage": "istanbul -- cover ./test nolarge",
+    "coverage": "istanbul -- cover node_modules/tape/bin/tape test/*-spec.js nolarge",
     "coverage-report": "npm run coverage && istanbul report html",
-    "test": "node test",
+    "test": "tape test/*-spec.js nolarge | tap-dot && node test/run-compare",
     "lint": "eslint lib"
   },
   "repository": {
@@ -51,6 +51,8 @@
     "eslint": "^1.0.0",
     "istanbul": "^0.3.17",
     "phantomjs": "^1.9.17",
-    "serve-static": "^1.10.0"
+    "serve-static": "^1.10.0",
+    "tap-dot": "^1.0.0",
+    "tape": "^4.0.2"
   }
 }
