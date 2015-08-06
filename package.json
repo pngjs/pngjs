@@ -46,6 +46,7 @@
     "url": "https://github.com/lukeapage/pngjs2/issues"
   },
   "devDependencies": {
+    "buffer-equal": "0.0.1",
     "connect": "^3.4.0",
     "coveralls": "^2.11.3",
     "eslint": "^1.0.0",

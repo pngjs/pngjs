@@ -13,7 +13,7 @@ try {
   console.log("Comparing in PhantomJS");
 
   childProcess.execFile(binPath, childArgs, function (err, stdout, stderr) {
-    
+
     // handle results
     console.log("Comparison Test Results:");
     console.log(stdout);
