@@ -13,11 +13,12 @@ try {
   console.log("Comparing in PhantomJS");
 
   childProcess.execFile(binPath, childArgs, function (err, stdout, stderr) {
+    
     // handle results
     console.log("Comparison Test Results:");
     console.log(stdout);
     process.exit(err ? 1 : 0);
   });
-} catch(e) {
+} catch (e) {
   console.log("Error starting phantomjs");
 }

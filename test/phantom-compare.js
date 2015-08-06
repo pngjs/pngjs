@@ -7,8 +7,8 @@ var page = require('webpage').create();
 var last = new Date();
 var timeout = 10000;
 
-setInterval(function() {
-  var results = page.evaluate(function(){
+setInterval(function () {
+  var results = page.evaluate(function () {
     if (window.isFinished && window.isFinished()) {
       return window.results;
     }
@@ -18,7 +18,7 @@ setInterval(function() {
     var success = true;
     var successes = [],
       failures = [];
-    for(var i = 0; i < results.length; i++) {
+    for (var i = 0; i < results.length; i++) {
       var result = results[i];
       if (result.success) {
         successes.push(result.name);
@@ -41,16 +41,16 @@ setInterval(function() {
   }
 }, 100);
 
-page.onConsoleMessage = function(msg, lineNum, sourceId) {
+page.onConsoleMessage = function (msg, lineNum, sourceId) {
   //console.log('CONSOLE: ' + msg);
 };
 
-page.onError = function(msg, trace) {
+page.onError = function (msg, trace) {
   console.log('error.onError', msg, trace);
   phantom.exit();
 };
 
-phantom.onError = function(msg, trace) {
+phantom.onError = function (msg, trace) {
   console.log('error.onError', msg, trace);
   phantom.exit();
 };
