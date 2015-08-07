@@ -35,7 +35,12 @@ test('outputs background, created from scratch', function (t) {
       var out = fs.readFileSync(__dirname + '/bg.png');
       var ref = fs.readFileSync(__dirname + '/bg-ref.png');
 
-      t.ok(bufferEqual(out, ref), "compares with working file ok");
+      var isBufferEqual = bufferEqual(out, ref);
+      t.ok(isBufferEqual, "compares with working file ok");
+
+      if (!isBufferEqual) {
+        console.log(out.length, ref.length);
+      }
 
       t.end();
     });
