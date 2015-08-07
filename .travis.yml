@@ -1,5 +1,5 @@
 language: node_js
-after_success: npm run coverage && cat ./coverage/lcov.info | coveralls
+after_success: ./coveralls.sh
 node_js:
   - "0.12"
   - "iojs"
