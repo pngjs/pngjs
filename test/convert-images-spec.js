@@ -2,14 +2,13 @@ var fs = require('fs');
 var PNG = require('../lib/png').PNG;
 var test = require('tape');
 
-console.dir(process.argv); // temp test to see why io.js is ignoring
 var noLargeOption = process.argv.indexOf("nolarge") >= 0;
 
 fs.readdir(__dirname + '/in/', function (err, files) {
   if (err) throw err;
 
   files = files.filter(function (file) {
-    return (noLargeOption || !file.match(/large/i)) && Boolean(file.match(/\.png$/i));
+    return (!noLargeOption || !file.match(/large/i)) && Boolean(file.match(/\.png$/i));
   });
 
   console.log("Converting images");
