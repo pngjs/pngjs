@@ -35,7 +35,7 @@
     "coverage": "istanbul -- cover node_modules/tape/bin/tape test/*-spec.js nolarge",
     "coverage-report": "npm run coverage && istanbul report html",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "test": "tape test/*-spec.js | tap-dot && node test/run-compare",
+    "test": "npm run lint && tape test/*-spec.js | tap-dot && node test/run-compare",
     "lint": "eslint lib"
   },
   "repository": {
