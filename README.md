@@ -15,12 +15,14 @@ Based on [pngjs](https://github.com/niegowski/node-pngjs) with the follow enhanc
 Known lack of support for:
 
   * Extended PNG e.g. Animation
+  * Writing in different formats
+  * Synchronous write
 
 Requirements
 ============
 
-Async - Node.js 0.10 / 0.12 / IO.js
-Sync - Node.js 0.12 / IO.js
+* Async - Node.js 0.10 / 0.12 / IO.js
+* Sync - Node.js 0.12 / IO.js
 
 Comparison Table
 ================
@@ -92,7 +94,7 @@ fs.createReadStream('in.png')
 ```
 For more examples see `examples` folder.
 
-API
+Async API
 ================
 
 As input any color type is accepted (grayscale, rgb, palette, grayscale with alpha, rgb with alpha) but 8 bit per sample (channel) is the only supported bit depth. Interlaced mode is not supported.
@@ -171,6 +173,23 @@ fs.createReadStream('in.png')
     });
 ```
 
+### Property: adjustGamma()
+Helper that takes data and adjusts it to be gamma corrected. Note that it is not 100% reliable with transparent colours because that requires knowing the background colour the bitmap is rendered on to.
+
+In tests against PNG suite it compared 100% with chrome on all 8 bit and below images. On IE there were some differences.
+
+The following example reads a file, adjusts the gamma (which sets the gamma to 0) and writes it out again, effectively removing any gamma correction from the image.
+
+```js
+fs.createReadStream('in.png')
+    .pipe(new PNG({
+        filterType: -1
+    }))
+    .on('parsed', function() {
+        this.adjustGamma();
+        this.pack().pipe(fs.createWriteStream('out.png'));
+    });
+```
 
 ### Property: width
 Width of image in pixels
@@ -187,8 +206,40 @@ Buffer of image pixel data. Every pixel consists 4 bytes: R, G, B, A (opacity).
 ### Property: gamma
 Gamma of image (0 if not specified)
 
+# Sync API
+
+## PNG.sync
+
+### PNG.sync.read(buffer)
+
+Take a buffer and returns a PNG image. The properties on the image include the meta data and `data` as per the async API above.
+
+```
+var data = fs.readFileSync('in.png');
+var png = PNG.sync.read(data);
+```
+
+### PNG.adjustGamma(src)
+
+Adjusts the gamma of a sync image. See thr async adjustGamma.
+
+```
+var data = fs.readFileSync('in.png');
+var png = PNG.sync.read(data);
+PNG.adjustGamma(png);
+```
+
+
 Changelog
 ============
+
+### 1.0.0 - 08/08/2015
+  - More tests
+  - source linted
+  - maintainability refactorings
+  - async API - exceptions in reading now emit warnings
+  - documentation improvement - sync api now documented, adjustGamma documented
+  - breaking change - gamma chunk is now written. previously a read then write would destroy gamma information, now it is persisted.
 
 ### 0.0.3 - 03/08/2015
   - Error handling fixes
