@@ -1,6 +1,6 @@
 {
   "name": "pngjs2",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "PNG encoder/decoder in pure JS, supporting any bit size & interlace, async & sync with full test suite.",
   "contributors": [
     "Alexandre Paré",
