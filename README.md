@@ -110,6 +110,7 @@ As input any color type is accepted (grayscale, rgb, palette, grayscale with alp
 - `deflateChunkSize` - chunk size used for deflating data chunks, this should be power of 2 and must not be less than 256 and more than 32*1024 (default: 32 kB)
 - `deflateLevel` - compression level for delate (default: 9)
 - `deflateStrategy` - compression strategy for delate (default: 3)
+- `deflateFactory` - deflate stream factory (default: `zlib.createDeflate`)
 - `filterType` - png filtering method for scanlines (default: -1 => auto, accepts array of numbers 0-4)
 
 
