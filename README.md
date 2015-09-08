@@ -163,11 +163,9 @@ Returns `this` for method chaining.
 
 For example, the following code copies the top-left 100x50 px of `in.png` into dst and writes it to `out.png`:
 ```js
-var dst = new PNG({filterType: -1, width: 100, height: 50});
+var dst = new PNG({width: 100, height: 50});
 fs.createReadStream('in.png')
-    .pipe(new PNG({
-        filterType: -1
-    }))
+    .pipe(new PNG())
     .on('parsed', function() {
         this.bitblt(dst, 0, 0, 100, 50, 0, 0);
         dst.pack().pipe(fs.createWriteStream('out.png'));
@@ -183,9 +181,7 @@ The following example reads a file, adjusts the gamma (which sets the gamma to 0
 
 ```js
 fs.createReadStream('in.png')
-    .pipe(new PNG({
-        filterType: -1
-    }))
+    .pipe(new PNG())
     .on('parsed', function() {
         this.adjustGamma();
         this.pack().pipe(fs.createWriteStream('out.png'));
