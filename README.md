@@ -9,13 +9,14 @@ Based on [pngjs](https://github.com/niegowski/node-pngjs) with the follow enhanc
   * Support for reading 1,2,4 & 16 bit files
   * Support for reading interlace files
   * Support for reading `tTRNS` transparent colours
+  * Support for writing colortype 2 (RGB) and colortype 6 (RGBA)
   * Sync interface as well as async
   * API compatible with pngjs and node-pngjs
 
 Known lack of support for:
 
   * Extended PNG e.g. Animation
-  * Writing in different formats
+  * Writing in different formats, colortype 0 (greyscale), colortype 3 (indexed color), colortype 4 (greyscale with alpha)
   * Synchronous write
 
 Requirements
