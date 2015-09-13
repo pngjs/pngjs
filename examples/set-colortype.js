@@ -15,28 +15,19 @@ var png = new PNG({
   width: w,
   height:h,
   bitDepth: 8,
-  colorType: 2
+  colorType: 2,
+  inputHasAlpha: false
 });
 
 png.data = bitmapWithoutAlpha;
 png.pack().pipe(fs.createWriteStream('colortype2.png'));
 
-
-
-bitmapWithoutAlpha = new Buffer(w * h * 4);
-ofs=0;
-for (var i = 0; i < bitmapWithoutAlpha.length; i+=4) {
-    bitmapWithoutAlpha[ofs++] = 0xff;
-    bitmapWithoutAlpha[ofs++] = i % 0xff;
-    bitmapWithoutAlpha[ofs++] = (i/4) % 0xff;
-    bitmapWithoutAlpha[ofs++] = 0xff;
-}
-
 var png = new PNG({
   width: w,
   height:h,
   bitDepth: 8,
-  colorType: 6
+  colorType: 6,
+  inputHasAlpha: false
 });
 
 png.data = bitmapWithoutAlpha;

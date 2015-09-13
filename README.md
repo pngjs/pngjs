@@ -113,6 +113,8 @@ As input any color type is accepted (grayscale, rgb, palette, grayscale with alp
 - `deflateStrategy` - compression strategy for delate (default: 3)
 - `deflateFactory` - deflate stream factory (default: `zlib.createDeflate`)
 - `filterType` - png filtering method for scanlines (default: -1 => auto, accepts array of numbers 0-4)
+- `colorType` - the output colorType - see constants. 2 = color, no alpha, 6 = color & alpha. Default currently 6, but in the future may calculate best mode.
+- `inputHasAlpha` - whether the input bitmap has 4 bits per pixel (rgb and alpha) or 3 (rgb - no alpha).
 
 
 ### Event "metadata"
@@ -230,6 +232,18 @@ PNG.adjustGamma(png);
 
 Changelog
 ============
+
+### 1.2.0 - 13/09/2015
+  - support passing colorType to write PNG's and writing bitmaps without alpha information
+
+### 1.1.0 - 07/09/2015
+  - support passing a deflate factory for controlled compression
+
+### 1.0.2 - 22/08/2015
+  - Expose all PNG creation info
+
+### 1.0.1 - 21/08/2015
+  - Fix non square interlaced files
 
 ### 1.0.0 - 08/08/2015
   - More tests
