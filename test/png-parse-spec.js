@@ -55,6 +55,7 @@ test("should correctly parse an 1-bit colormap png", function (t) {
         if (getPixel(png, x, y) !== 0x000000FF) {
           t.fail("pixel does not match - " + getPixel(png, x, y) + " !== 0x000000FF");
           isOk = false;
+          break;
         }
     }
     t.ok(isOk, "The pixels should all be black");
@@ -82,6 +83,7 @@ test("should correctly parse an 8-bit grayscale png", function (t) {
         if (getPixel(png, x, y) !== (x ^ y) * 286331136 + 255) {
           t.fail("pixel does not match - " + getPixel(png, x, y) + " !== " + ((x ^ y) * 286331136 + 255));
           isOk = false;
+          break;
         }
       }
     }
@@ -110,6 +112,7 @@ test("should correctly parse an 8-bit truecolor png", function (t) {
         if (getPixel(png, x, y) !== x * 285212672 + y * 1114112 + (x ^ y) * 4352 + 255) {
           t.fail("pixel does not match - " + getPixel(png, x, y) + " !== " + (x * 285212672 + y * 1114112 + (x ^ y) * 4352 + 255));
           isOk = false;
+          break;
         }
       }
     }
@@ -138,12 +141,8 @@ test("should correctly parse an 8-bit truecolor png with alpha", function (t) {
         if (getPixel(png, x, y) !== x * 285212672 + y * 1114112 + (x ^ y) * 17) {
           t.fail("pixel does not match - " + getPixel(png, x, y) + " !== " + (x * 285212672 + y * 1114112 + (x ^ y) * 17));
           isOk = false;
+          break;
         }
-
-        t.equal(
-          getPixel(png, x, y),
-          x * 285212672 + y * 1114112 + (x ^ y) * 17
-        )
       }
     }
     t.ok(isOk, "The pixels should match");
@@ -205,6 +204,7 @@ test("should correctly read an indexed color image", function (t) {
         if (getPixel(png, x, y) !== expected) {
           t.fail("pixel does not match - " + getPixel(png, x, y) + " !== " + expected);
           isOk = false;
+          break;
         }
       }
     }
@@ -249,6 +249,7 @@ test("should correctly read an indexed color image with alpha", function (t) {
         if (getPixel(png, x, y) !== expected) {
           t.fail("pixel does not match - " + getPixel(png, x, y) + " !== " + expected);
           isOk = false;
+          break;
         }
       }
     }
