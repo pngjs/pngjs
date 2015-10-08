@@ -145,7 +145,7 @@ two arguments `(err, data)`.
 
 Returns `this` for method chaining.
 
-+#### Example
+#### Example
 ```js
 new PNG({ filterType:4 }).parse( imageData, function(error, data)
 {
@@ -221,7 +221,7 @@ var png = PNG.sync.read(data);
 
 ### PNG.adjustGamma(src)
 
-Adjusts the gamma of a sync image. See thr async adjustGamma.
+Adjusts the gamma of a sync image. See the async adjustGamma.
 
 ```
 var data = fs.readFileSync('in.png');
