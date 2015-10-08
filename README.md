@@ -233,6 +233,10 @@ PNG.adjustGamma(png);
 Changelog
 ============
 
+### 2.0.0 - 08/10/2015
+ - fixes to readme
+ - *breaking change* - bitblt on the png prototype now doesn't take a unused, unnecessary src first argument
+
 ### 1.2.0 - 13/09/2015
   - support passing colorType to write PNG's and writing bitmaps without alpha information
 
