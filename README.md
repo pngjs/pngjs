@@ -68,7 +68,7 @@ Example
 ==========
 ```js
 var fs = require('fs'),
-    PNG = require('node-png').PNG;
+    PNG = require('pngjs2').PNG;
 
 fs.createReadStream('in.png')
     .pipe(new PNG({
