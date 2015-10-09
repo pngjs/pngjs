@@ -4,7 +4,6 @@ var fs = require('fs'),
 
 fs.createReadStream('test/in/basi0g01.png')
     .pipe(new PNG({
-        filterType: 4
     }))
     .on('parsed', function() {
 
