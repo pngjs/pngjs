@@ -1,10 +1,10 @@
 [![Build Status](https://travis-ci.org/lukeapage/pngjs2.svg?branch=master)](https://travis-ci.org/lukeapage/pngjs2) [![Build status](https://ci.appveyor.com/api/projects/status/tb8418jql1trkntd/branch/master?svg=true)](https://ci.appveyor.com/project/lukeapage/pngjs2/branch/master) [![Coverage Status](https://coveralls.io/repos/lukeapage/pngjs2/badge.svg?branch=master&service=github)](https://coveralls.io/github/lukeapage/pngjs2?branch=master) [![npm version](https://badge.fury.io/js/pngjs2.svg)](http://badge.fury.io/js/pngjs2)
 
-pngjs2
+pngjs
 ========
 Simple PNG encoder/decoder for Node.js with no dependencies.
 
-Based on [pngjs](https://github.com/niegowski/node-pngjs) with the follow enhancements.
+Based on the original [pngjs](https://github.com/niegowski/node-pngjs) with the follow enhancements.
 
   * Support for reading 1,2,4 & 16 bit files
   * Support for reading interlace files
@@ -30,7 +30,7 @@ Comparison Table
 
 Name     |  Forked From | Sync | Async | 16 Bit | 1/2/4 Bit | Interlace | Gamma | Encodes | Tested
 ---------|--------------|------|-------|--------|-----------|-----------|-------|---------|--------
-pngjs2   | pngjs        | Read | Yes   | Yes    | Yes       | Yes       | Yes   | Yes     | Yes
+pngjs v2 | pngjs        | Read | Yes   | Yes    | Yes       | Yes       | Yes   | Yes     | Yes
 node-png | pngjs        | No   | Yes   | No     | No        | No        | Hidden| Yes     | Manual
 pngjs    |              | No   | Yes   | No     | No        | No        | Hidden| Yes     | Manual
 png-coder| pngjs        | No   | Yes   | Yes    | No        | No        | Hidden| Yes     | Manual
@@ -49,7 +49,7 @@ Native C++ node decoders:
 Tests
 =====
 
-Tested using [PNG Suite](http://www.schaik.com/pngsuite/). We read every file into pngjs2, output it in standard 8bit colour, synchronously and asynchronously, then compare the original
+Tested using [PNG Suite](http://www.schaik.com/pngsuite/). We read every file into pngjs, output it in standard 8bit colour, synchronously and asynchronously, then compare the original
 with the newly saved images.
 
 To run the tests, run `node test`.
@@ -61,14 +61,14 @@ In addition we use a tolerance of 3 for 16 bit images in PhantomJS because Phant
 Installation
 ===============
 ```
-$ npm install pngjs2  --save
+$ npm install pngjs  --save
 ```
 
 Example
 ==========
 ```js
 var fs = require('fs'),
-    PNG = require('pngjs2').PNG;
+    PNG = require('pngjs').PNG;
 
 fs.createReadStream('in.png')
     .pipe(new PNG({
