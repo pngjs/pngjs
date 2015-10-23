@@ -115,6 +115,8 @@ As input any color type is accepted (grayscale, rgb, palette, grayscale with alp
 - `filterType` - png filtering method for scanlines (default: -1 => auto, accepts array of numbers 0-4)
 - `colorType` - the output colorType - see constants. 2 = color, no alpha, 6 = color & alpha. Default currently 6, but in the future may calculate best mode.
 - `inputHasAlpha` - whether the input bitmap has 4 bits per pixel (rgb and alpha) or 3 (rgb - no alpha).
+- `bgColor` - an object containing red, green, and blue values between 0 and 255
+that is used when an rgba image is converted to rgb (default: 255,255,255)
 
 
 ### Event "metadata"
@@ -205,6 +207,30 @@ Buffer of image pixel data. Every pixel consists 4 bytes: R, G, B, A (opacity).
 
 ### Property: gamma
 Gamma of image (0 if not specified)
+
+## Converting RGBA to RGB
+
+When removing the alpha channel from an image, there needs to be a background color to correctly
+convert each pixel's transparency to the appropriate RGB value. By default, pngjs will flatten
+the image against a white background. You can override this in the options:
+
+```js
+var fs = require('fs'),
+    PNG = require('pngjs').PNG;
+
+fs.createReadStream('in.png')
+    .pipe(new PNG({
+        colorType: 2,
+        bgColor: {
+            red: 0,
+            green: 255,
+            blue: 0
+        }
+    }))
+    .on('parsed', function() {
+        this.pack().pipe(fs.createWriteStream('out.png'));
+    });
+```
 
 # Sync API
 
