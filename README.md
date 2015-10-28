@@ -116,7 +116,7 @@ As input any color type is accepted (grayscale, rgb, palette, grayscale with alp
 - `colorType` - the output colorType - see constants. 2 = color, no alpha, 6 = color & alpha. Default currently 6, but in the future may calculate best mode.
 - `inputHasAlpha` - whether the input bitmap has 4 bits per pixel (rgb and alpha) or 3 (rgb - no alpha).
 - `bgColor` - an object containing red, green, and blue values between 0 and 255
-that is used when an rgba image is converted to rgb (default: 255,255,255)
+that is used when packing a PNG if alpha is not to be included (default: 255,255,255)
 
 
 ### Event "metadata"
@@ -208,7 +208,7 @@ Buffer of image pixel data. Every pixel consists 4 bytes: R, G, B, A (opacity).
 ### Property: gamma
 Gamma of image (0 if not specified)
 
-## Converting RGBA to RGB
+## Packing a PNG and removing alpga (RGBA to RGB)
 
 When removing the alpha channel from an image, there needs to be a background color to correctly
 convert each pixel's transparency to the appropriate RGB value. By default, pngjs will flatten
