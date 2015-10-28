@@ -259,6 +259,10 @@ PNG.adjustGamma(png);
 Changelog
 ============
 
+### 2.1.0 - 28/10/2015
+ - rename package to pngjs
+ - added 'bgColor' option
+
 ### 2.0.0 - 08/10/2015
  - fixes to readme
  - *breaking change* - bitblt on the png prototype now doesn't take a unused, unnecessary src first argument
