@@ -3,4 +3,4 @@ after_success:
   - test $TRAVIS_NODE_VERSION = '4.3' && npm run coverage && npm install coveralls@2 && npm run coveralls
 node_js:
   - "0.12"
-  - "4.3"
+  - "4.1"
