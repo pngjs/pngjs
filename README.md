@@ -245,6 +245,17 @@ var data = fs.readFileSync('in.png');
 var png = PNG.sync.read(data);
 ```
 
+### PNG.sync.write(png)
+
+Take a PNG image and returns a buffer. The properties on the image include the meta data and `data` as per the async API above.
+
+```
+var data = fs.readFileSync('in.png');
+var png = PNG.sync.read(data);
+var buffer = PNG.sync.write(png);
+fs.writeFileSync('out.png', buffer);
+```
+
 ### PNG.adjustGamma(src)
 
 Adjusts the gamma of a sync image. See the async adjustGamma.
