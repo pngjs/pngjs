@@ -30,9 +30,8 @@ Comparison Table
 
 Name     |  Forked From | Sync | Async | 16 Bit | 1/2/4 Bit | Interlace | Gamma | Encodes | Tested
 ---------|--------------|------|-------|--------|-----------|-----------|-------|---------|--------
-pngjs v2 | pngjs        | Read | Yes   | Yes    | Yes       | Yes       | Yes   | Yes     | Yes
+pngjs    |              | Yes  | Yes   | Yes    | Yes       | Yes       | Yes   | Yes     | Yes
 node-png | pngjs        | No   | Yes   | No     | No        | No        | Hidden| Yes     | Manual
-pngjs    |              | No   | Yes   | No     | No        | No        | Hidden| Yes     | Manual
 png-coder| pngjs        | No   | Yes   | Yes    | No        | No        | Hidden| Yes     | Manual
 pngparse |              | No   | Yes   | No     | Yes       | No        | No    | No      | Yes
 pngparse-sync | pngparse| Yes  | No    | No     | Yes       | No        | No    | No      | Yes
@@ -269,6 +268,11 @@ PNG.adjustGamma(png);
 
 Changelog
 ============
+
+### 2.2.0 - 04/12/2015
+ - Add sync write api
+ - Fix newfile example
+ - Correct comparison table
 
 ### 2.1.0 - 28/10/2015
  - rename package to pngjs
