@@ -51,7 +51,7 @@ Tests
 Tested using [PNG Suite](http://www.schaik.com/pngsuite/). We read every file into pngjs, output it in standard 8bit colour, synchronously and asynchronously, then compare the original
 with the newly saved images.
 
-To run the tests, run `node test`.
+To run the tests, after getting the repo and installing with `npm i`, run `npm test`.
 
 The only thing not converted is gamma correction - this is because multiple vendors will do gamma correction differently, so the tests will have different results on different browsers.
 
