@@ -23,7 +23,7 @@ Requirements
 ============
 
 * Async - Node.js 0.10 / 0.12 / IO.js
-* Sync - Node.js 0.12 / IO.js
+* Sync - Node.js 0.12 / IO.js (0.10 with [node-zlib-backport](https://www.npmjs.com/package/node-zlib-backport) dependency)
 
 Comparison Table
 ================
