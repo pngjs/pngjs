@@ -49,7 +49,7 @@
   "bugs": {
     "url": "https://github.com/lukeapage/pngjs2/issues"
   },
-  "dependencies": {
+  "optionalDependencies": {
     "node-zlib-backport": "^0.11.15"
   },
   "devDependencies": {
