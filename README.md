@@ -268,6 +268,9 @@ PNG.adjustGamma(png);
 Changelog
 ============
 
+### 2.3.0 - 22/04/2016
+ - Support for sync in node 0.10
+
 ### 2.2.0 - 04/12/2015
  - Add sync write api
  - Fix newfile example
