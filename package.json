@@ -1,6 +1,6 @@
 {
   "name": "pngjs",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "PNG encoder/decoder in pure JS, supporting any bit size & interlace, async & sync with full test suite.",
   "contributors": [
     "Alexandre Paré",
@@ -48,9 +48,6 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/lukeapage/pngjs2/issues"
-  },
-  "optionalDependencies": {
-    "node-zlib-backport": "^0.11.15"
   },
   "devDependencies": {
     "buffer-equal": "1.0.0",
