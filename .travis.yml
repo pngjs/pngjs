@@ -1,9 +1,8 @@
 language: node_js
 before_script:
-  - test $TRAVIS_NODE_VERSION = '0.10' && npm i node-zlib-backport
-  - echo $TRAVIS_NODE_VERSION
+  - if [ "$TRAVIS_NODE_VERSION" = "0.10" ]; then npm i node-zlib-backport; fi
 after_success:
-  - test $TRAVIS_NODE_VERSION =~ 5.* && npm run coverage && npm i coveralls@2 && npm run coveralls
+  - if [ "$TRAVIS_NODE_VERSION" = "5" ]; then npm run coverage && npm i coveralls@2 && npm run coveralls; fi
 node_js:
   - "0.10"
   - "0.12"
