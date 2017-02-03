@@ -152,6 +152,21 @@ new PNG({ filterType:4 }).parse( imageData, function(error, data)
 });
 ```
 
+
+### png.flip([vertical])
+Flips image data of the instance of PNG.
+
+Optional `vertical` argument is a `boolean` which determines whether to flip vertically or horizontally.
+
+Returns `this` for method chaining.
+
+#### Example
+```js
+// flips vertically and then horizontally
+PNG.flip(true).flip();
+```
+
+
 ### png.pack()
 Starts converting data to PNG file Stream.
 
