@@ -2,6 +2,8 @@
 
 pngjs
 ========
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/lukeapage/pngjs.svg)](https://greenkeeper.io/)
 Simple PNG encoder/decoder for Node.js with no dependencies.
 
 Based on the original [pngjs](https://github.com/niegowski/node-pngjs) with the follow enhancements.
