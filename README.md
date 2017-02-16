@@ -269,6 +269,9 @@ PNG.adjustGamma(png);
 Changelog
 ============
 
+### 3.0.1 - 16/02/2017
+ - Fix single pixel pngs
+
 ### 3.0.0 - 03/08/2016
  - Drop support for node below v4 and iojs. Pin to 2.3.0 to use with old, unsupported or patched node versions.
 
