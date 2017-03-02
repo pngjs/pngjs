@@ -207,7 +207,7 @@ Buffer of image pixel data. Every pixel consists 4 bytes: R, G, B, A (opacity).
 ### Property: gamma
 Gamma of image (0 if not specified)
 
-## Packing a PNG and removing alpga (RGBA to RGB)
+## Packing a PNG and removing alpha (RGBA to RGB)
 
 When removing the alpha channel from an image, there needs to be a background color to correctly
 convert each pixel's transparency to the appropriate RGB value. By default, pngjs will flatten
