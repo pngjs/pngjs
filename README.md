@@ -11,15 +11,14 @@ Based on the original [pngjs](https://github.com/niegowski/node-pngjs) with the 
   * Support for reading 1,2,4 & 16 bit files
   * Support for reading interlace files
   * Support for reading `tTRNS` transparent colours
-  * Support for writing colortype 2 (RGB) and colortype 6 (RGBA)
+  * Support for writing colortype 0 (grayscale), colortype 2 (RGB), colortype 4 (grayscale alpha) and colortype 6 (RGBA)
   * Sync interface as well as async
   * API compatible with pngjs and node-pngjs
 
 Known lack of support for:
 
   * Extended PNG e.g. Animation
-  * Writing in different formats, colortype 0 (greyscale), colortype 3 (indexed color), colortype 4 (greyscale with alpha)
-  * Synchronous write
+  * Writing in colortype 3 (indexed color)
 
 Requirements
 ============
@@ -112,7 +111,7 @@ As input any color type is accepted (grayscale, rgb, palette, grayscale with alp
 - `deflateStrategy` - compression strategy for delate (default: 3)
 - `deflateFactory` - deflate stream factory (default: `zlib.createDeflate`)
 - `filterType` - png filtering method for scanlines (default: -1 => auto, accepts array of numbers 0-4)
-- `colorType` - the output colorType - see constants. 2 = color, no alpha, 6 = color & alpha. Default currently 6, but in the future may calculate best mode.
+- `colorType` - the output colorType - see constants. 0 = grayscale, no alpha, 2 = color, no alpha, 4 = grayscale & alpha, 6 = color & alpha. Default currently 6, but in the future may calculate best mode.
 - `inputHasAlpha` - whether the input bitmap has 4 bits per pixel (rgb and alpha) or 3 (rgb - no alpha).
 - `bgColor` - an object containing red, green, and blue values between 0 and 255
 that is used when packing a PNG if alpha is not to be included (default: 255,255,255)
@@ -251,7 +250,8 @@ Take a PNG image and returns a buffer. The properties on the image include the m
 ```
 var data = fs.readFileSync('in.png');
 var png = PNG.sync.read(data);
-var buffer = PNG.sync.write(png);
+var options = { colorType: 6 };
+var buffer = PNG.sync.write(png, options);
 fs.writeFileSync('out.png', buffer);
 ```
 
