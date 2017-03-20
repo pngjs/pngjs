@@ -19,6 +19,17 @@ Known lack of support for:
 
   * Extended PNG e.g. Animation
   * Writing in colortype 3 (indexed color)
+  
+# Table of Contents
+* [Requirements](#requirements)
+* [Comparison Table](#comparison-table)
+* [Tests](#tests)
+* [Installation](#installation)
+* [Browserify](#browserify)
+* [Example](#example)
+* [Async API](#async-api)
+* [Sync API](#sync-api)
+* [Changelog](#changelog)
 
 Requirements
 ============
@@ -61,6 +72,14 @@ Installation
 ```
 $ npm install pngjs  --save
 ```
+
+Browserify
+===========
+Use [Browserify](browserify.org) to build a version of library that can run client-side:
+```
+$ browserify lib/png.js --standalone png > bundle.js
+```
+Then depending on your module system you can either `require('bundle.js')` or if you're not using module loader you can use plain old `<script src="bundle.js"></script>` tag and the library will be available under `window.PNG` or just `PNG`.
 
 Example
 ==========
