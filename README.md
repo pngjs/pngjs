@@ -288,6 +288,10 @@ PNG.adjustGamma(png);
 Changelog
 ============
 
+### 3.2.0 - 30/04/2017
+
+- Support for encoding 8-bit grayscale images
+
 ### 3.1.0 - 30/04/2017
  - Support for pngs with zlib chunks that are malformed after valid data
 

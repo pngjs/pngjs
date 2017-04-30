@@ -1,6 +1,6 @@
 {
   "name": "pngjs",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "PNG encoder/decoder in pure JS, supporting any bit size & interlace, async & sync with full test suite.",
   "contributors": [
     "Alexandre Paré",
@@ -13,7 +13,8 @@
     "liangzeng",
     "Michael Vogt",
     "Xin-Xin Wang",
-    "toriningen"
+    "toriningen",
+    "Eugene Kulabuhov"
   ],
   "homepage": "https://github.com/lukeapage/pngjs",
   "keywords": [
