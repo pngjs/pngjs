@@ -269,6 +269,9 @@ PNG.adjustGamma(png);
 Changelog
 ============
 
+### 3.1.0 - 30/04/2017
+ - Support for pngs with zlib chunks that are malformed after valid data
+
 ### 3.0.1 - 16/02/2017
  - Fix single pixel pngs
 
