@@ -126,8 +126,8 @@ As input any color type is accepted (grayscale, rgb, palette, grayscale with alp
 - `height` - as above
 - `checkCRC` - whether parser should be strict about checksums in source stream (default: `true`)
 - `deflateChunkSize` - chunk size used for deflating data chunks, this should be power of 2 and must not be less than 256 and more than 32*1024 (default: 32 kB)
-- `deflateLevel` - compression level for delate (default: 9)
-- `deflateStrategy` - compression strategy for delate (default: 3)
+- `deflateLevel` - compression level for deflate (default: 9)
+- `deflateStrategy` - compression strategy for deflate (default: 3)
 - `deflateFactory` - deflate stream factory (default: `zlib.createDeflate`)
 - `filterType` - png filtering method for scanlines (default: -1 => auto, accepts array of numbers 0-4)
 - `colorType` - the output colorType - see constants. 0 = grayscale, no alpha, 2 = color, no alpha, 4 = grayscale & alpha, 6 = color & alpha. Default currently 6, but in the future may calculate best mode.
@@ -149,7 +149,7 @@ Image's header has been parsed, metadata contains this information:
 
 ### Event: "parsed"
 `function(data) { }`
-Input image has been completly parsed, `data` is complete and ready for modification.
+Input image has been completely parsed, `data` is complete and ready for modification.
 
 
 ### Event: "error"
