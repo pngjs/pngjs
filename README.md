@@ -131,7 +131,10 @@ As input any color type is accepted (grayscale, rgb, palette, grayscale with alp
 - `deflateFactory` - deflate stream factory (default: `zlib.createDeflate`)
 - `filterType` - png filtering method for scanlines (default: -1 => auto, accepts array of numbers 0-4)
 - `colorType` - the output colorType - see constants. 0 = grayscale, no alpha, 2 = color, no alpha, 4 = grayscale & alpha, 6 = color & alpha. Default currently 6, but in the future may calculate best mode.
-- `inputHasAlpha` - whether the input bitmap has 4 bits per pixel (rgb and alpha) or 3 (rgb - no alpha).
+- `inputColorType` - the input colorType - see constants. Default is 6 (RGBA)
+- `bitDepth` - the bitDepth of the output, 8 or 16 bits. Input data is expected to have this bit depth.
+16 bit data is expected in the system endianness (Default: 8)
+- `inputHasAlpha` - whether the input bitmap has 4 bytes per pixel (rgb and alpha) or 3 (rgb - no alpha).
 - `bgColor` - an object containing red, green, and blue values between 0 and 255
 that is used when packing a PNG if alpha is not to be included (default: 255,255,255)
 
