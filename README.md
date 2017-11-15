@@ -291,6 +291,14 @@ PNG.adjustGamma(png);
 Changelog
 ============
 
+### 3.3.1 - 15/11/2017
+
+- Bugfixes and removal of es6
+
+### 3.3.0
+
+- Add writing 16 bit channels and support for grayscale input
+
 ### 3.2.0 - 30/04/2017
 
 - Support for encoding 8-bit grayscale images
