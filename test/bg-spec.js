@@ -1,21 +1,17 @@
-#!/usr/bin/env node
-'use strict';
-
-var fs = require('fs');
+#!/usr/bin/env babel-node
+import fs from 'fs';
 var PNG = require('../lib/png').PNG;
-var test = require('tape');
-var bufferEqual = require('buffer-equal');
+import test from 'tape';
+import bufferEqual from 'buffer-equal';
 
 test('outputs background, created from scratch', function(t) {
-
   t.timeoutAfter(1000 * 60 * 5);
 
   var png = new PNG({
     width: 10,
     height: 10,
-    filterType: -1
+    filterType: -1,
   });
-
 
   for (var y = 0; y < png.height; y++) {
     for (var x = 0; x < png.width; x++) {

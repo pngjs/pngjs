@@ -48,6 +48,7 @@
     "coverage-report": "npm run coverage && istanbul report html",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "test": "npm run lint && babel-tape-runner test/*-spec.js | tap-dot && babel-node test/run-compare",
+    "test:only": "babel-tape-runner test/*-spec.js",
     "test:watch": "nodemon --exec 'npm run test' -e js,json",
     "lint": "eslint lib",
     "lint:fix": "eslint lib --fix"

@@ -2,9 +2,9 @@
 /* eslint-disable no-console */
 require('./http-server');
 
-var path = require('path');
-var childProcess = require('child_process');
-var phantomjs = require('phantomjs-prebuilt');
+import path from 'path';
+import childProcess from 'child_process';
+import phantomjs from 'phantomjs-prebuilt';
 var binPath = phantomjs.path;
 
 var childArgs = [

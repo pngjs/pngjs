@@ -1,7 +1,7 @@
 'use strict';
 
 const serveStatic = require('serve-static');
-//var serveIndex = require('serve-index');
+//import serveIndex from 'serve-index';
 const http = require('http');
 const connect = require('connect');
 

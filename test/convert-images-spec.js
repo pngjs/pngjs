@@ -1,8 +1,6 @@
-'use strict';
-
-var fs = require('fs');
-var PNG = require('../lib/png').PNG;
-var test = require('tape');
+import fs from 'fs';
+import { PNG } from '../lib/png';
+import test from 'tape';
 
 var noLargeOption = process.argv.indexOf('nolarge') >= 0;
 
@@ -25,7 +23,6 @@ fs.readdir(__dirname + '/in/', function(err, orgFiles) {
     }
 
     test('convert sync - ' + file, function(t) {
-
       t.timeoutAfter(1000 * 60 * 5);
 
       var data = fs.readFileSync(__dirname + '/in/' + file);
@@ -61,7 +58,6 @@ fs.readdir(__dirname + '/in/', function(err, orgFiles) {
     });
 
     test('convert async - ' + file, function(t) {
-
       t.timeoutAfter(1000 * 60 * 5);
 
       fs.createReadStream(__dirname + '/in/' + file)

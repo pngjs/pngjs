@@ -1,8 +1,6 @@
 /*global phantom:true*/
 /*global window:true*/
 /* eslint-disable no-console */
-'use strict';
-
 var page = require('webpage').create();
 
 var last = new Date();

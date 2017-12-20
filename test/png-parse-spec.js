@@ -1,8 +1,8 @@
-var test = require('tape');
-var fs = require('fs');
-var path = require('path');
+import test from 'tape';
+import fs from 'fs';
+import path from 'path';
 var PNG = require('../lib/png').PNG;
-var stream = require('stream');
+import stream from 'stream';
 
 function parseFile(filename, cb) {
   fs.createReadStream(path.join(__dirname, 'png-parse-data', filename))
