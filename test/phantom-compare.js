@@ -1,5 +1,6 @@
 /*global phantom:true*/
-
+/*global window:true*/
+/* eslint-disable no-console */
 'use strict';
 
 var page = require('webpage').create();
@@ -7,8 +8,8 @@ var page = require('webpage').create();
 var last = new Date();
 var timeout = 10000;
 
-setInterval(function () {
-  var results = page.evaluate(function () {
+setInterval(function() {
+  var results = page.evaluate(function() {
     if (window.isFinished && window.isFinished()) {
       return window.results;
     }
@@ -16,20 +17,21 @@ setInterval(function () {
 
   if (results) {
     var success = true;
-    var successes = [],
-      failures = [];
+    var successes = [];
+    var failures = [];
     for (var i = 0; i < results.length; i++) {
       var result = results[i];
       if (result.success) {
         successes.push(result.name);
-      } else {
+      }
+      else {
         failures.push(result.name);
       }
       success = success && result.success;
     }
-    console.log("Success:", successes.join(", "));
+    console.log('Success:', successes.join(', '));
     if (failures.length) {
-      console.log("Failure:", failures.join(", "));
+      console.error('Failure:', failures.join(', '));
     }
 
     phantom.exit(success ? 0 : 1);
@@ -41,18 +43,18 @@ setInterval(function () {
   }
 }, 100);
 
-page.onConsoleMessage = function (msg, lineNum, sourceId) {
+page.onConsoleMessage = function(msg, lineNum, sourceId) {
   //console.log('CONSOLE: ' + msg);
 };
 
-page.onError = function (msg, trace) {
+page.onError = function(msg, trace) {
   console.log('error.onError', msg, trace);
   phantom.exit();
 };
 
-phantom.onError = function (msg, trace) {
+phantom.onError = function(msg, trace) {
   console.log('error.onError', msg, trace);
   phantom.exit();
 };
 
-page.open("http://localhost:8000");
+page.open('http://localhost:8000');
