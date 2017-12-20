@@ -31,7 +31,7 @@ setInterval(function() {
     }
     console.log('Success:', successes.join(', '));
     if (failures.length) {
-      console.error('Failure:', failures.join(', '));
+      console.log('Failure:', failures.join(', '));
     }
 
     phantom.exit(success ? 0 : 1);

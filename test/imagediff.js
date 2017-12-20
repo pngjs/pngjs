@@ -4,9 +4,10 @@
 // For original source and documentation visit:
 // http://www.github.com/HumbleSoftware/js-imagedif
 'use strict';
+/* eslint-disable */
 
 (function(name, definition) {
-  var root = this;
+  var root = this || window;
   if (typeof module !== 'undefined') {
     try {
       var Canvas = require('canvas');
