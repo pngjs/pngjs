@@ -3,3 +3,5 @@ node_modules
 coverage
 examples/*.png
 browser\.js
+dist
+package-lock\.json

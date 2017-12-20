@@ -32,21 +32,24 @@
   "engines": {
     "node": ">=4.0.0"
   },
-  "main": "./lib/png.js",
+  "main": "./dist/png.js",
   "directories": {
-    "lib": "lib",
+    "lib": "dist",
     "example": "examples",
     "test": "test"
   },
   "scripts": {
-    "build": "npm run prepublish",
+    "build": "npm run compile && npm run prepublish",
     "prepublish": "npm run browserify",
+    "clean:dist": "rimraf dist",
+    "compile": "npm run clean:dist && babel -d dist/ lib/",
     "browserify": "browserify lib/png.js --standalone png > browser.js",
     "coverage": "istanbul -- cover node_modules/tape/bin/tape test/*-spec.js nolarge",
     "coverage-report": "npm run coverage && istanbul report html",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "test": "npm run lint && tape test/*-spec.js | tap-dot && node test/run-compare",
-    "lint": "eslint lib"
+    "test": "npm run lint && babel-tape-runner test/*-spec.js | tap-dot && node test/run-compare",
+    "lint": "eslint lib",
+    "lint:fix": "eslint lib --fix"
   },
   "repository": {
     "type": "git",
@@ -57,12 +60,16 @@
     "url": "https://github.com/lukeapage/pngjs2/issues"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-tape-runner": "^2.0.1",
     "browserify": "^14.5.0",
     "buffer-equal": "1.0.0",
     "connect": "^3.4.0",
     "eslint": "^3.2.2",
     "istanbul": "^0.4.4",
     "phantomjs-prebuilt": "^2.1.7",
+    "rimraf": "^2.6.2",
     "serve-static": "^1.10.0",
     "tap-dot": "^1.0.0",
     "tape": "^4.0.2"
