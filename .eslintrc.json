@@ -1,4 +1,7 @@
 {
+  "parserOptions": {
+    "sourceType": "module"
+  },
   "rules": {
     "no-alert": 2,
     "no-array-constructor": 0,
