@@ -13,8 +13,6 @@ fs.readdir(__dirname + '/in/', function(err, orgFiles) {
     return (!noLargeOption || !file.match(/large/i)) && Boolean(file.match(/\.png$/i));
   });
 
-  console.log('Converting images');
-
   files.forEach(function(file) {
 
     var expectedError = false;
@@ -49,10 +47,16 @@ fs.readdir(__dirname + '/in/', function(err, orgFiles) {
       outpng.data = png.data;
       outpng.width = png.width;
       outpng.height = png.height;
+      const outFileName = __dirname + '/outsync/' + file;
       outpng.pack()
-        .pipe(fs.createWriteStream(__dirname + '/outsync/' + file)
+        .pipe(fs.createWriteStream(outFileName)
           .on('finish', function() {
-            t.pass('completed');
+            if (fs.existsSync(outFileName)) {
+              t.pass('completed');
+            }
+            else {
+              t.fail('No file created');
+            }
             t.end();
           }));
     });
@@ -78,13 +82,20 @@ fs.readdir(__dirname + '/in/', function(err, orgFiles) {
             return t.end();
           }
 
+          const outFileName = __dirname + '/out/' + file;
+          // eslint-disable-next-line
           this.pack()
             .pipe(
-            fs.createWriteStream(__dirname + '/out/' + file)
-              .on('finish', function() {
-                t.pass('completed');
-                t.end();
-              }));
+              fs.createWriteStream(outFileName)
+                .on('finish', function() {
+                  if (fs.existsSync(outFileName)) {
+                    t.pass(`completed`);
+                  }
+                  else {
+                    t.fail('No file created');
+                  }
+                  t.end();
+                }));
         });
     });
   });
