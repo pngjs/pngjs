@@ -43,7 +43,7 @@
     "prepublish": "npm run browserify",
     "clean:dist": "rimraf dist",
     "compile": "npm run clean:dist && babel -d dist/ lib/",
-    "browserify": "browserify lib/png.js --standalone png > browser.js",
+    "browserify": "browserify dist/png.js --standalone png > browser.js",
     "coverage": "istanbul -- cover node_modules/tape/bin/tape test/*-spec.js nolarge",
     "coverage-report": "npm run coverage && istanbul report html",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
