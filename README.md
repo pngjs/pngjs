@@ -291,6 +291,11 @@ PNG.adjustGamma(png);
 Changelog
 ============
 
+### 3.3.3 - 20/04/2018
+
+- More fixes for node 9
+- Travis config includes node 8 and 9
+
 ### 3.3.2 - 16/02/2018
 
 - Fix for node 9
