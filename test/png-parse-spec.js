@@ -311,6 +311,24 @@ test("should bail with an error given an invalid PNG", function (t) {
   })
 })
 
+test("should bail with an error given an empty file", function (t) {
+  var buf = new Buffer("")
+
+  return parseBuffer(buf, function (err) {
+    t.ok(err instanceof Error, "Error should be received");
+    t.end();
+  })
+})
+
+test("should bail with an error given a truncated PNG", function (t) {
+  var buf = new Buffer("89504e470d0a1a0a000000", "hex")
+
+  return parseBuffer(buf, function (err) {
+    t.ok(err instanceof Error, "Error should be received");
+    t.end();
+  })
+})
+
 test("should return an error if a PNG is normal except for a missing IEND", function (t) {
   var buf = new Buffer("89504e470d0a1a0a0000000d49484452000000100000001008000000003a98a0bd000000017352474200aece1ce90000002174455874536f6674776172650047726170686963436f6e7665727465722028496e74656c297787fa190000008849444154789c448e4111c020100363010b58c00216b080052c60010b58c0c259c00216ae4d3b69df99dd0d1062caa5b63ee6b27d1c012996dceae86b6ef38398106acb65ae3e8edbbef780564b5e73743fdb409e1ef2f4803c3de4e901797ac8d3f3f0f490a7077ffffd03f5f507eaeb0fd4d71fa8af3f505f7fa0befe7c7dfdb9000000ffff0300c0fd7f8179301408", "hex")
 
