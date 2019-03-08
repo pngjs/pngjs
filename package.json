@@ -58,7 +58,7 @@
     "istanbul": "^0.4.4",
     "phantomjs-prebuilt": "^2.1.7",
     "serve-static": "^1.10.0",
-    "tap-dot": "^1.0.0",
+    "tap-dot": "^2.0.0",
     "tape": "^4.0.2"
   }
 }
