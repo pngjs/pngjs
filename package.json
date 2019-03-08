@@ -34,9 +34,14 @@
   },
   "main": "./lib/png.js",
   "directories": {
-    "example": "examples"
+    "lib": "lib",
+    "example": "examples",
+    "test": "test"
   },
   "scripts": {
+    "build": "npm run prepublish",
+    "prepublish": "npm run browserify",
+    "browserify": "browserify lib/png.js --standalone png > browser.js",
     "coverage": "istanbul -- cover node_modules/tape/bin/tape test/*-spec.js nolarge",
     "coverage-report": "npm run coverage && istanbul report html",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
@@ -52,6 +57,7 @@
     "url": "https://github.com/lukeapage/pngjs2/issues"
   },
   "devDependencies": {
+    "browserify": "^14.5.0",
     "buffer-equal": "1.0.0",
     "connect": "^3.4.0",
     "eslint": "^3.2.2",
