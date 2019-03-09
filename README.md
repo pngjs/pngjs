@@ -291,6 +291,13 @@ PNG.adjustGamma(png);
 Changelog
 ============
 
+### 3.4.0 - 09/03/2019
+
+- Include whether the png has alpha in the meta data
+- emit an error if the image is truncated instead of hanging
+- Add a browserified version
+- speed up some mapping functions
+
 ### 3.3.3 - 19/04/2018
 
 - Real fix for node 9
