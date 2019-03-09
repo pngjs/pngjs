@@ -60,7 +60,7 @@
     "browserify": "^14.5.0",
     "buffer-equal": "1.0.0",
     "connect": "^3.4.0",
-    "eslint": "^3.2.2",
+    "eslint": "^4.1.0",
     "istanbul": "^0.4.4",
     "phantomjs-prebuilt": "^2.1.7",
     "serve-static": "^1.10.0",
