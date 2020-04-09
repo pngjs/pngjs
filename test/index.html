@@ -259,7 +259,7 @@
 
             var tolerance;
             if (inImage.src.match(/16\.png/)) {
-                tolerance = 3; // phantomjs uses a different scaling method.
+                tolerance = 2; // phantomjs uses a different scaling method.
                 // In chrome with gamma correction this can be 2.
             } else {
                 tolerance = 0;
