@@ -3,3 +3,4 @@ node_modules
 coverage
 examples/*.png
 browser\.js
+.nyc_output

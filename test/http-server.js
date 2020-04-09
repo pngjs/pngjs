@@ -1,14 +1,16 @@
-var serveStatic = require('serve-static');
-//var serveIndex = require('serve-index');
-var http = require('http');
-var connect = require('connect');
+let serveStatic = require("serve-static");
+let http = require("http");
+let connect = require("connect");
 
-var app = connect();
-server = http.createServer(app);
+let app = connect();
+let server = http.createServer(app);
 
-app.use(serveStatic('test'));
-//app.use(serveIndex('test'));
+app.use(serveStatic("test"));
 
 server.listen(8000);
+
+module.exports = () => {
+  server.close();
+};
 
 console.log("Tests available at http://localhost:8000/");

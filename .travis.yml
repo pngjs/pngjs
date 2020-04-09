@@ -1,8 +1,6 @@
 language: node_js
 after_success:
-  - if [ "$TRAVIS_NODE_VERSION" = "10" ]; then npm run coverage && npm i coveralls@2 && npm run coveralls; fi
+  - if [ "$TRAVIS_NODE_VERSION" = "10" ]; then yarn coverage && yarn coveralls; fi
 node_js:
-  - "8"
   - "10"
-  - "11"
   - "12"

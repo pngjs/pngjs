@@ -1,51 +1,50 @@
 #!/usr/bin/env node
 
-var fs = require('fs');
-var PNG = require("../lib/png").PNG;
-var w = 32;
-var h = 64;
+let fs = require("fs");
+let PNG = require("../lib/png").PNG;
+let w = 32;
+let h = 64;
 
 /// RGBA input (color type 6)
-var buffer = Buffer.alloc(2 * w * h * 4);
-var bitmap = new Uint16Array(buffer.buffer);
-for (var i = 0; i < h; i++) {
-  for (var j = 0; j < w; j++) {
-    bitmap[i * 4 * w + 4*j] = i * 65535 / h;
-    bitmap[i * 4 * w + 4*j + 1] = j * 65535 / w;
-    bitmap[i * 4 * w + 4*j + 2] = (h-i) * 65535 / h;
-    bitmap[i * 4 * w + 4*j + 3] = 65535;
+let buffer = Buffer.alloc(2 * w * h * 4);
+let bitmap = new Uint16Array(buffer.buffer);
+for (let i = 0; i < h; i++) {
+  for (let j = 0; j < w; j++) {
+    bitmap[i * 4 * w + 4 * j] = (i * 65535) / h;
+    bitmap[i * 4 * w + 4 * j + 1] = (j * 65535) / w;
+    bitmap[i * 4 * w + 4 * j + 2] = ((h - i) * 65535) / h;
+    bitmap[i * 4 * w + 4 * j + 3] = 65535;
   }
 }
 
-var png = new PNG({
+let png = new PNG({
   width: w,
-  height:h,
+  height: h,
   bitDepth: 16,
   colorType: 6,
   inputColorType: 6,
-  inputHasAlpha: true
+  inputHasAlpha: true,
 });
 
 png.data = buffer;
-png.pack().pipe(fs.createWriteStream('colortype6.png'));
+png.pack().pipe(fs.createWriteStream("colortype6.png"));
 
 //////// Grayscale 16 bits///////
 
-var buffer = Buffer.alloc(2 * w * h);
-var bitmap = new Uint16Array(buffer.buffer);
-for (var i = 0; i < h; i++) {
-  for (var j = 0; j < w; j++)
-    bitmap[i * w + j] = i * 65535 / h;
+buffer = Buffer.alloc(2 * w * h);
+bitmap = new Uint16Array(buffer.buffer);
+for (let i = 0; i < h; i++) {
+  for (let j = 0; j < w; j++) bitmap[i * w + j] = (i * 65535) / h;
 }
 
 png = new PNG({
   width: w,
-  height:h,
+  height: h,
   bitDepth: 16,
   colorType: 0,
   inputColorType: 0,
-  inputHasAlpha: false
+  inputHasAlpha: false,
 });
 
 png.data = buffer;
-png.pack().pipe(fs.createWriteStream('colortype0.png'));
+png.pack().pipe(fs.createWriteStream("colortype0.png"));

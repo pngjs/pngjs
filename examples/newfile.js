@@ -1,13 +1,14 @@
-var PNG = require("../lib/png").PNG;
-var fs = require("fs");
+let PNG = require("../lib/png").PNG;
+let fs = require("fs");
 
-var newfile = new PNG({width:10,height:10});
+let newfile = new PNG({ width: 10, height: 10 });
 
-for (var y = 0; y < newfile.height; y++) {
-  for (var x = 0; x < newfile.width; x++) {
-    var idx = (newfile.width * y + x) << 2;
+for (let y = 0; y < newfile.height; y++) {
+  for (let x = 0; x < newfile.width; x++) {
+    let idx = (newfile.width * y + x) << 2;
 
-    var col = x < (newfile.width >> 1) ^ y < (newfile.height >> 1) ? 0xe5 : 0xff;
+    let col =
+      (x < newfile.width >> 1) ^ (y < newfile.height >> 1) ? 0xe5 : 0xff;
 
     newfile.data[idx] = col;
     newfile.data[idx + 1] = col;
@@ -16,8 +17,9 @@ for (var y = 0; y < newfile.height; y++) {
   }
 }
 
-newfile.pack()
-  .pipe(fs.createWriteStream(__dirname + '/newfile.png'))
-  .on('finish', function() {
-    console.log('Written!');
+newfile
+  .pack()
+  .pipe(fs.createWriteStream(__dirname + "/newfile.png"))
+  .on("finish", function () {
+    console.log("Written!");
   });

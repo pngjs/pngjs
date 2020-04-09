@@ -30,7 +30,7 @@
     "pngjs"
   ],
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=10.13.0"
   },
   "main": "./lib/png.js",
   "directories": {
@@ -39,14 +39,15 @@
     "test": "test"
   },
   "scripts": {
-    "build": "npm run prepublish",
-    "prepublish": "npm run browserify",
+    "build": "yarn prepublish",
+    "prepublish": "yarn browserify",
     "browserify": "browserify lib/png.js --standalone png > browser.js",
-    "coverage": "istanbul -- cover node_modules/tape/bin/tape test/*-spec.js nolarge",
-    "coverage-report": "npm run coverage && istanbul report html",
+    "coverage": "nyc tape test/*-spec.js nolarge",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "test": "npm run lint && tape test/*-spec.js | tap-dot && node test/run-compare",
-    "lint": "eslint lib"
+    "test": "yarn lint && yarn prettier:check && tape test/*-spec.js | tap-dot && node test/run-compare",
+    "lint": "eslint .",
+    "prettier:write": "prettier --write .",
+    "prettier:check": "prettier --check ."
   },
   "repository": {
     "type": "git",
@@ -57,14 +58,18 @@
     "url": "https://github.com/lukeapage/pngjs2/issues"
   },
   "devDependencies": {
-    "browserify": "^14.5.0",
+    "browserify": "16.5.1",
     "buffer-equal": "1.0.0",
-    "connect": "^3.4.0",
-    "eslint": "^5.15.2",
-    "istanbul": "^0.4.4",
+    "connect": "3.4.0",
+    "coveralls": "3.0.11",
+    "eslint": "5.15.2",
+    "eslint-config-prettier": "6.10.1",
+    "istanbul": "0.4.4",
+    "nyc": "15.0.1",
+    "prettier": "2.0.4",
     "puppeteer": "1.20.0",
-    "serve-static": "^1.10.0",
-    "tap-dot": "^2.0.0",
-    "tape": "^4.0.2"
+    "serve-static": "1.10.0",
+    "tap-dot": "2.0.0",
+    "tape": "4.0.2"
   }
 }

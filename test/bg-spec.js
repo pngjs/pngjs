@@ -1,26 +1,24 @@
 #!/usr/bin/env node
 
-var fs = require('fs');
-var PNG = require('../lib/png').PNG;
-var test = require('tape');
-var bufferEqual = require('buffer-equal');
+let fs = require("fs");
+let PNG = require("../lib/png").PNG;
+let test = require("tape");
+let bufferEqual = require("buffer-equal");
 
-test('outputs background, created from scratch', function (t) {
-
+test("outputs background, created from scratch", function (t) {
   t.timeoutAfter(1000 * 60 * 5);
 
-  var png = new PNG({
+  let png = new PNG({
     width: 10,
     height: 10,
-    filterType: -1
+    filterType: -1,
   });
 
+  for (let y = 0; y < png.height; y++) {
+    for (let x = 0; x < png.width; x++) {
+      let idx = (png.width * y + x) << 2;
 
-  for (var y = 0; y < png.height; y++) {
-    for (var x = 0; x < png.width; x++) {
-      var idx = (png.width * y + x) << 2;
-
-      var col = x < (png.width >> 1) ^ y < (png.height >> 1) ? 0xe5 : 0xff;
+      let col = (x < png.width >> 1) ^ (y < png.height >> 1) ? 0xe5 : 0xff;
 
       png.data[idx] = col;
       png.data[idx + 1] = col;
@@ -29,13 +27,14 @@ test('outputs background, created from scratch', function (t) {
     }
   }
 
-  png.pack().pipe(fs.createWriteStream(__dirname + '/bg.png'))
+  png
+    .pack()
+    .pipe(fs.createWriteStream(__dirname + "/bg.png"))
     .on("finish", function () {
+      let out = fs.readFileSync(__dirname + "/bg.png");
+      let ref = fs.readFileSync(__dirname + "/bg-ref.png");
 
-      var out = fs.readFileSync(__dirname + '/bg.png');
-      var ref = fs.readFileSync(__dirname + '/bg-ref.png');
-
-      var isBufferEqual = bufferEqual(out, ref);
+      let isBufferEqual = bufferEqual(out, ref);
       t.ok(isBufferEqual, "compares with working file ok");
 
       if (!isBufferEqual) {
