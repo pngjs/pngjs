@@ -291,6 +291,12 @@ PNG.adjustGamma(png);
 Changelog
 ============
 
+### 4.0.0 - 09/04/2020
+
+- Fix issue in newer nodes with using Buffer
+- Fix async issue with some png files
+- Drop support for Node 4 & 6
+
 ### 3.4.0 - 09/03/2019
 
 - Include whether the png has alpha in the meta data
