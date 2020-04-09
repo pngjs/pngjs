@@ -3,7 +3,7 @@ var PNG = require("../lib/png").PNG;
 var w = 320;
 var h = 200;
 
-var bitmapWithoutAlpha = new Buffer(w * h * 3);
+var bitmapWithoutAlpha = Buffer.alloc(w * h * 3);
 var ofs=0;
 for (var i = 0; i < bitmapWithoutAlpha.length; i+=3) {
     bitmapWithoutAlpha[ofs++] = 0xff;
