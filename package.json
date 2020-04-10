@@ -43,7 +43,6 @@
     "prepublish": "yarn browserify",
     "browserify": "browserify lib/png.js --standalone png > browser.js",
     "coverage": "nyc tape test/*-spec.js nolarge",
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "test": "yarn lint && yarn prettier:check && tape test/*-spec.js | tap-dot && node test/run-compare",
     "lint": "eslint .",
     "prettier:write": "prettier --write .",
@@ -60,8 +59,8 @@
   "devDependencies": {
     "browserify": "16.5.1",
     "buffer-equal": "1.0.0",
+    "codecov": "3.6.5",
     "connect": "3.7.0",
-    "coveralls": "3.0.11",
     "eslint": "6.8.0",
     "eslint-config-prettier": "6.10.1",
     "nyc": "15.0.1",
