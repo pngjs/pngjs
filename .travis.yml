@@ -4,3 +4,6 @@ after_success:
 node_js:
   - "10"
   - "12"
+branches:
+  only:
+    - master
