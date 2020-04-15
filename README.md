@@ -30,10 +30,6 @@ Known lack of support for:
 - [Sync API](#sync-api)
 - [Changelog](#changelog)
 
-# Requirements
-
-- Node.js v4 (use older v2.3.0 for 0.10/0.12/iojs support)
-
 # Comparison Table
 
 | Name          | Forked From | Sync | Async | 16 Bit | 1/2/4 Bit | Interlace | Gamma  | Encodes | Tested |
@@ -60,8 +56,6 @@ Tested using [PNG Suite](http://www.schaik.com/pngsuite/). We read every file in
 To run the tests, fetch the repo (tests are not distributed via npm) and install with `npm i`, run `npm test`.
 
 The only thing not converted is gamma correction - this is because multiple vendors will do gamma correction differently, so the tests will have different results on different browsers.
-
-In addition we use a tolerance of 3 for 16 bit images in PhantomJS because PhantomJS seems to have non-compliant rules for downscaling 16 bit images.
 
 # Installation
 
