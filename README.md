@@ -294,6 +294,15 @@ PNG.adjustGamma(png);
 
 # Changelog
 
+### 5.0.0 - 15/04/2020
+
+- Drop support for Node 8
+- Browserified bundle may now contain ES20(15-20) code if the supported node version supports it. Please run the browserified version through babel if you need to support older browsers.
+
+### 4.0.1 - 15/04/2020
+
+- Fix to possible null reference in nextTick of async method
+
 ### 4.0.0 - 09/04/2020
 
 - Fix issue in newer nodes with using Buffer
