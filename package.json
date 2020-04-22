@@ -64,7 +64,7 @@
     "eslint": "6.8.0",
     "eslint-config-prettier": "6.10.1",
     "nyc": "15.0.1",
-    "prettier": "2.0.4",
+    "prettier": "2.0.5",
     "puppeteer": "3.0.0",
     "serve-static": "1.14.1",
     "tap-dot": "2.0.0",
