@@ -61,7 +61,7 @@
     "buffer-equal": "1.0.0",
     "codecov": "3.7.0",
     "connect": "3.7.0",
-    "eslint": "7.0.0",
+    "eslint": "7.6.0",
     "eslint-config-prettier": "6.11.0",
     "nyc": "15.0.1",
     "prettier": "2.0.5",
