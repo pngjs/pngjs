@@ -288,6 +288,10 @@ PNG.adjustGamma(png);
 
 # Changelog
 
+### 5.1.0 - 13/09/2020
+
+- Add option to skip rescaling
+
 ### 5.0.0 - 15/04/2020
 
 - Drop support for Node 8
