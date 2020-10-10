@@ -57,7 +57,7 @@
     "url": "https://github.com/lukeapage/pngjs/issues"
   },
   "devDependencies": {
-    "browserify": "16.5.2",
+    "browserify": "17.0.0",
     "buffer-equal": "1.0.0",
     "codecov": "3.7.1",
     "connect": "3.7.0",
