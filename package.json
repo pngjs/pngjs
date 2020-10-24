@@ -38,6 +38,10 @@
     "example": "examples",
     "test": "test"
   },
+  "files": [
+    "browser.js",
+    "lib/"
+  ],
   "scripts": {
     "build": "yarn prepublish",
     "prepublish": "yarn browserify",
