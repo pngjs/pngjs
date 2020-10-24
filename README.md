@@ -288,6 +288,12 @@ PNG.adjustGamma(png);
 
 # Changelog
 
+### 6.0.0 - 24/10/2020
+
+- BREAKING - Sync version now throws if there is unexpected content at the end of the stream.
+- BREAKING - Drop support for node 10 (Though nothing incompatible in this release yet)
+- Reduce the number of files included in the package
+
 ### 5.1.0 - 13/09/2020
 
 - Add option to skip rescaling
