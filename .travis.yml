@@ -1,9 +1,9 @@
 language: node_js
 after_success:
-  - if [ "$TRAVIS_NODE_VERSION" = "10" ]; then yarn coverage && yarn codecov; fi
+  - if [ "$TRAVIS_NODE_VERSION" = "12"]; then yarn coverage && yarn codecov; fi
 node_js:
-  - "10"
   - "12"
+  - "14"
 branches:
   only:
     - master
