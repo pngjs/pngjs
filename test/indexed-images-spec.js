@@ -102,6 +102,31 @@ fs.readdir(__dirname + "/in/", function (err, files) {
         return t.end();
       }
 
+      // Compare the palette
+      for (
+        let i = 0;
+        i < Math.max(png.palette.length, png2.palette.length);
+        i++
+      ) {
+        for (let c = 0; c < 4; c++) {
+          if (png.palette[i][c] != png2.palette[i][c]) {
+            let component = ["red", "green", "blue", "alpha"];
+            t.fail(
+              "Palette entry " +
+                i +
+                " " +
+                component[c] +
+                " component was not written correctly (expected " +
+                png.palette[i][c] +
+                ", got " +
+                png2.palette[i][c] +
+                ")"
+            );
+            return t.end();
+          }
+        }
+      }
+
       for (let i = 0; i < Math.max(png.data.length, png2.data.length); i++) {
         if (png.data[i] !== png2.data[i]) {
           t.fail(
