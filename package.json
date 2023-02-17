@@ -1,6 +1,6 @@
 {
-  "name": "pngjs",
-  "version": "6.0.0",
+  "name": "@camoto/pngjs",
+  "version": "6.1.0",
   "description": "PNG encoder/decoder in pure JS, supporting any bit size & interlace, async & sync with full test suite.",
   "contributors": [
     "Alexandre Paré",
@@ -16,7 +16,7 @@
     "toriningen",
     "Eugene Kulabuhov"
   ],
-  "homepage": "https://github.com/lukeapage/pngjs",
+  "homepage": "https://github.com/camoto-project/pngjs",
   "keywords": [
     "PNG",
     "decoder",
@@ -72,6 +72,7 @@
     "puppeteer": "5.4.0",
     "serve-static": "1.14.1",
     "tap-dot": "2.0.0",
-    "tape": "5.0.1"
+    "tape": "5.0.1",
+    "yarn": "^1.22.10"
   }
 }

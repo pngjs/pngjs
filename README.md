@@ -1,22 +1,27 @@
 [![Build Status](https://travis-ci.com/lukeapage/pngjs.svg?branch=master)](https://travis-ci.com/lukeapage/pngjs) [![Build status](https://ci.appveyor.com/api/projects/status/qo5x8ayutr028108/branch/master?svg=true)](https://ci.appveyor.com/project/lukeapage/pngjs/branch/master) [![codecov](https://codecov.io/gh/lukeapage/pngjs/branch/master/graph/badge.svg)](https://codecov.io/gh/lukeapage/pngjs) [![npm version](https://badge.fury.io/js/pngjs.svg)](http://badge.fury.io/js/pngjs)
 
+# pngjs/camoto
+
+This is a fork of [pngjs](https://github.com/lukeapage/pngjs) with support for
+indexed images.  It only exists as a fork as the upstream project appears to be
+dead.
+
 # pngjs
 
 Simple PNG encoder/decoder for Node.js with no dependencies.
 
 Based on the original [pngjs](https://github.com/niegowski/node-pngjs) with the follow enhancements.
 
-- Support for reading 1,2,4 & 16 bit files
-- Support for reading interlace files
-- Support for reading `tTRNS` transparent colours
-- Support for writing colortype 0 (grayscale), colortype 2 (RGB), colortype 4 (grayscale alpha) and colortype 6 (RGBA)
+- Support for reading and writing 1, 2, 4, 8 & 16 bit files
+- Support for reading interlaced files
+- Support for reading PLTE palettes and `tTRNS` transparent colours
+- Support for writing colortype 0 (grayscale), colortype 2 (RGB), colortype 3 (indexed), colortype 4 (grayscale alpha) and colortype 6 (RGBA)
 - Sync interface as well as async
 - API compatible with pngjs and node-pngjs
 
 Known lack of support for:
 
 - Extended PNG e.g. Animation
-- Writing in colortype 3 (indexed color)
 
 # Table of Contents
 
@@ -129,6 +134,9 @@ As input any color type is accepted (grayscale, rgb, palette, grayscale with alp
 - `inputHasAlpha` - whether the input bitmap has 4 bytes per pixel (rgb and alpha) or 3 (rgb - no alpha).
 - `bgColor` - an object containing red, green, and blue values between 0 and 255
   that is used when packing a PNG if alpha is not to be included (default: 255,255,255)
+- `keepIndexed` - default `false` (indexed images are expanded to RGBA). Set to
+  `true` to keep the pixel data indexed. 1-, 2- and 4-bit data is unpacked into
+  8-bits per pixel but no further processing is done.
 
 ### Event "metadata"
 
