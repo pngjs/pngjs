@@ -46,7 +46,7 @@
     "build": "yarn prepublish",
     "prepublish": "yarn browserify",
     "browserify": "browserify lib/png.js --standalone png > browser.js",
-    "coverage": "nyc --reporter=lcov --reporter=text-summary tape test/*-spec.js nolarge",
+    "coverage": "nyc --reporter=lcov --reporter=text-summary tape test/*-spec.js",
     "test": "yarn lint && yarn prettier:check && tape test/*-spec.js | tap-dot && node test/run-compare",
     "lint": "eslint .",
     "prettier:write": "prettier --write .",
@@ -63,15 +63,15 @@
   "devDependencies": {
     "browserify": "17.0.0",
     "buffer-equal": "1.0.1",
-    "codecov": "3.7.1",
+    "codecov": "3.8.3",
     "connect": "3.7.0",
-    "eslint": "7.12.0",
+    "eslint": "8.34.0",
     "eslint-config-prettier": "6.14.0",
     "nyc": "15.1.0",
-    "prettier": "2.1.1",
+    "prettier": "2.8.4",
     "puppeteer": "5.4.0",
-    "serve-static": "1.14.1",
+    "serve-static": "1.15.0",
     "tap-dot": "2.0.0",
-    "tape": "5.0.1"
+    "tape": "5.6.3"
   }
 }
