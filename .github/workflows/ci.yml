@@ -36,4 +36,6 @@ jobs:
         run: yarn test
       - if: matrix.os == 'windows-latest'
         name: Codecov
-        run: yarn coverage && yarn codecov
+        run: yarn coverage
+      - if: matrix.os == 'windows-latest'
+        uses: codecov/codecov-action@v3
