@@ -62,7 +62,7 @@
   },
   "devDependencies": {
     "browserify": "17.0.0",
-    "buffer-equal": "1.0.0",
+    "buffer-equal": "1.0.1",
     "codecov": "3.8.3",
     "connect": "3.7.0",
     "eslint": "8.34.0",
