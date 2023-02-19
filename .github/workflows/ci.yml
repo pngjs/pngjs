@@ -1,0 +1,32 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test_on_node:
+    name: Test
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [19.x, 18.x, 17.x, 16.x, 14.x, 12.x, "12.22.0"]
+        include:
+          - os: windows-latest
+            node: "16.x"
+          - os: macOS-latest
+            node: "16.x"
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Install Packages
+        run: yarn
+      - name: Test
+        run: yarn test
