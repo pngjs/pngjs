@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [19.x, 18.x, 17.x, 16.x, 14.x, 12.x, "12.22.0"]
+        node: [18.x, 17.x, 16.x, 14.x, 12.x]
         include:
           - os: windows-latest
             node: "16.x"
@@ -30,3 +30,6 @@ jobs:
         run: yarn
       - name: Test
         run: yarn test
+      - if: matrix.os == 'windows-latest'
+        name: Codecov
+        run: yarn coverage && yarn codecov
