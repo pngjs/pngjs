@@ -288,6 +288,10 @@ PNG.adjustGamma(png);
 
 # Changelog
 
+### 7.0.0 - 19/02/2023
+
+- BREAKING - Drop support for node 12 (Though nothing incompatible in this release yet)
+
 ### 6.0.0 - 24/10/2020
 
 - BREAKING - Sync version now throws if there is unexpected content at the end of the stream.

@@ -30,7 +30,7 @@
     "pngjs"
   ],
   "engines": {
-    "node": ">=12.13.0"
+    "node": ">=14.19.0"
   },
   "main": "./lib/png.js",
   "directories": {
