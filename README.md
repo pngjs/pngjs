@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/lukeapage/pngjs.svg?branch=master)](https://travis-ci.com/lukeapage/pngjs) [![Build status](https://ci.appveyor.com/api/projects/status/qo5x8ayutr028108/branch/master?svg=true)](https://ci.appveyor.com/project/lukeapage/pngjs/branch/master) [![codecov](https://codecov.io/gh/lukeapage/pngjs/branch/master/graph/badge.svg)](https://codecov.io/gh/lukeapage/pngjs) [![npm version](https://badge.fury.io/js/pngjs.svg)](http://badge.fury.io/js/pngjs)
+[![codecov](https://codecov.io/gh/pngjs/pngjs/branch/master/graph/badge.svg)](https://codecov.io/gh/pngjs/pngjs) [![npm version](https://badge.fury.io/js/pngjs.svg)](http://badge.fury.io/js/pngjs)
 
 # pngjs
 
