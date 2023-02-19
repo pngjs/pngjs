@@ -46,7 +46,7 @@
     "build": "yarn prepublish",
     "prepublish": "yarn browserify",
     "browserify": "browserify lib/png.js --standalone png > browser.js",
-    "coverage": "nyc --reporter=lcov --reporter=text-summary tape test/*-spec.js nolarge",
+    "coverage": "nyc --reporter=lcov --reporter=text-summary tape test/*-spec.js",
     "test": "yarn lint && yarn prettier:check && tape test/*-spec.js | tap-dot && node test/run-compare",
     "lint": "eslint .",
     "prettier:write": "prettier --write .",

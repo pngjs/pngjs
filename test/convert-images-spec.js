@@ -2,16 +2,11 @@ let fs = require("fs");
 let PNG = require("../lib/png").PNG;
 let test = require("tape");
 
-let noLargeOption = process.argv.indexOf("nolarge") >= 0;
-
 fs.readdir(__dirname + "/in/", function (err, files) {
   if (err) throw err;
 
   files = files.filter(function (file) {
-    return (
-      (!noLargeOption || !file.match(/large/i)) &&
-      Boolean(file.match(/\.png$/i))
-    );
+    return Boolean(file.match(/\.png$/i));
   });
 
   console.log("Converting images");
