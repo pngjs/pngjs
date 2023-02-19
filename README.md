@@ -1,4 +1,4 @@
-[![codecov](https://codecov.io/gh/pngjs/pngjs/branch/master/graph/badge.svg)](https://codecov.io/gh/pngjs/pngjs) [![npm version](https://badge.fury.io/js/pngjs.svg)](http://badge.fury.io/js/pngjs)
+![build](https://github.com/pngjs/pngjs/actions/workflows/ci.yml/badge.svg?branch=main) [![codecov](https://codecov.io/gh/pngjs/pngjs/branch/master/graph/badge.svg)](https://codecov.io/gh/pngjs/pngjs) [![npm version](https://badge.fury.io/js/pngjs.svg)](http://badge.fury.io/js/pngjs)
 
 # pngjs
 
