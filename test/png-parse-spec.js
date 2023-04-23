@@ -339,6 +339,14 @@ test("should bail with an error given an empty file", function (t) {
   });
 });
 
+test("should bail with an error given a bad chunk type", function (t) {
+  parseFile("with_bad_type.png", function (err, png) {
+    t.ok(err instanceof Error, "Error should be received");
+    t.equal(png, undefined, "PNG should not be defined");
+    t.end();
+  });
+});
+
 test("should bail with an error given a truncated PNG", function (t) {
   let buf = Buffer.from("89504e470d0a1a0a000000", "hex");
 
