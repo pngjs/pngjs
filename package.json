@@ -64,7 +64,7 @@
     "browserify": "17.0.0",
     "buffer-equal": "1.0.1",
     "connect": "3.7.0",
-    "eslint": "8.39.0",
+    "eslint": "8.41.0",
     "eslint-config-prettier": "8.8.0",
     "nyc": "15.1.0",
     "prettier": "2.8.8",
