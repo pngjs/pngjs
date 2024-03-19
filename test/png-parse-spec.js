@@ -377,6 +377,15 @@ test("should set alpha=true in metadata for images with tRNS chunk", function (t
     });
 });
 
+test("should set the pHYs header in metadata for images with a pHYs chunk", function (t) {
+  fs.createReadStream(path.join(__dirname, "in", "cdfn2c08.png"))
+    .pipe(new PNG())
+    .on("metadata", function (metadata) {
+      t.ok(metadata.physical, "Image should have a pHys header");
+      t.end();
+    });
+});
+
 test("Should parse with low highWaterMark", function (t) {
   fs.createReadStream(path.join(__dirname, "in", "tbbn0g04.png"), {
     highWaterMark: 2,
